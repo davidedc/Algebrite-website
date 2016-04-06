@@ -33,6 +33,14 @@
 
 <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
 
+    <div id="userinput" style="width:100%;">
+    <strong> Box 1: </strong> <br>
+    <textarea id="terminal1" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;">integral(x)</textarea>
+    <textarea id="output1" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input id="execute" name="execute" value="&#x25B6;" onclick="executeJS(1);" type="button">
+    </div>
+    </br>
+
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
 
@@ -59,6 +67,37 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+
+<script src="integralsTab/itab.js"></script>
+<script src="bigInteger.js"></script>
+<script src="eigenMath.js"></script>
+<script src="primetab/primetab.js"></script>
+
+  <script src="JavaScript%20Sandbox_files/prototype.js" type="text/javascript"></script>
+  <script src="JavaScript%20Sandbox_files/scriptaculous.js" type="text/javascript"></script>
+
+  <script type="text/javascript" language="javascript">
+    
+    
+    function executeJS (whichTerminal) {
+    var sandbox = $('sandbox');
+    var jsResult = $('jsResult');
+    try {
+      var result = run($('terminal' + whichTerminal).value);
+      //alert(result);
+      $('output' + whichTerminal).value = result
+    }
+    catch (err) {
+      var errDesc = err;
+      errorBox.update('<h4>Error!<\/h4><code>' + errDesc + '<\/code>' );
+      errorBox.show();
+    }
+    }
+    
+    document.observe("dom:loaded", function() {
+    });
+    
+  </script>
     
   </body>
 </html>
