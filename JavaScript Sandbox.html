@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html; charset=windows-1252">
 	<title> JavaScript Sandbox </title>
 	<script src="JavaScript%20Sandbox_files/prototype.js" type="text/javascript"></script>
-	<script src="JavaScript%20Sandbox_files/scriptaculous.js" type="text/javascript"></script><script type="text/javascript" src="JavaScript%20Sandbox_files/builder.js"></script><script type="text/javascript" src="JavaScript%20Sandbox_files/effects.js"></script><script type="text/javascript" src="JavaScript%20Sandbox_files/dragdrop.js"></script><script type="text/javascript" src="JavaScript%20Sandbox_files/controls.js"></script><script type="text/javascript" src="JavaScript%20Sandbox_files/slider.js"></script><script type="text/javascript" src="JavaScript%20Sandbox_files/sound.js"></script>
+	<script src="JavaScript%20Sandbox_files/scriptaculous.js" type="text/javascript"></script>
 	
 	<style type="text/css">
 	  body {background-color:#ddd;color:#000;font-size:10pt;font-family:Arial,Helvetica,sans-serif;padding:0;}
@@ -20,7 +20,6 @@
 	  #sandbox {padding:6px;border:1px solid #777;background-color:#eee;color:#000;margin:0 10px 10px 10px;}
 	  #sandboxWidgets {padding:6px;margin:0 10px 30px 10px;}
 	  #errormessage {padding:6px;background-color:#fdd;margin:0 10px 10px 10px;}
-	  #userinput {margin:0 10px 30px 10px;}
 	  #userinput textarea {font-family:monospace;font-size:0.9em;padding:2px;}
 	  #execute {border:2px solid #777;background-color:#fff;color:#000;padding:2px 6px;}
 	  #execute:hover {background-color:#dfd;}
@@ -34,10 +33,8 @@
 	  
 	  
 	  function executeJS (whichTerminal) {
-		var errorBox = $('errormessage');
 		var sandbox = $('sandbox');
 		var jsResult = $('jsResult');
-		errorBox.hide();
 		try {
 		  var result = run($('terminal' + whichTerminal).value);
 		  //alert(result);
@@ -59,45 +56,24 @@
   
   <body>
 	<div id="main">
-	  <div id="banner">
-		
 	  
-	  
-	  <div id="errormessage" style="display:none;">Error messages go here</div>
-	  
-	  <div id="userinput">
+	  <div id="userinput" style="width:100%;">
 		<strong> Box 1: </strong> <br>
-		<textarea id="terminal1" name="terminal" rows="12" cols="80">integral(x)</textarea> <br><br>
-		<textarea id="output1" name="terminal" rows="12" cols="80"></textarea>
-		</br>
+		<textarea id="terminal1" name="terminal" rows="12" cols="80" style="width:100%;">integral(x)</textarea>
+		<textarea id="output1" name="terminal" rows="12" cols="80" style="width:100%;"></textarea>
 		<input id="execute" name="execute" value="&#x25B6;" onclick="executeJS(1);" type="button">
-		<br>
 
 	  </div>
 
 	  <div id="userinput2">
 		<strong> Box 2: </strong> <br>
-		<textarea id="terminal2" name="terminal" rows="12" cols="80">integral(x^2)</textarea> <br><br>
-		<textarea id="output2" name="terminal" rows="12" cols="80"></textarea>
-		</br>
+		<textarea id="terminal2" name="terminal" rows="12" cols="80" style="width:100%;">integral(x^2)</textarea>
+		<textarea id="output2" name="terminal" rows="12" cols="80" style="width:100%;"></textarea>
 		<input id="execute" name="execute" value="&#x25B6;" onclick="executeJS(2);" type="button">
-		<br>
-
 	  </div>
 
 	  
 	</div>
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script src="JavaScript%20Sandbox_files/ga.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-3677681-1");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
 	
   
 <script src="integralsTab/itab.js"></script>
