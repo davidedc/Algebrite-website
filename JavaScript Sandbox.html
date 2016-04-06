@@ -29,7 +29,6 @@
 	</style>
 	
 	<script type="text/javascript" language="javascript">
-	  // <![CDATA[
 	  
 	  
 	  function executeJS (whichTerminal) {
@@ -50,7 +49,6 @@
 	  document.observe("dom:loaded", function() {
 	  });
 	  
-	  // ]]>
 	</script>
   </head>
   
@@ -59,16 +57,18 @@
 	  
 	  <div id="userinput" style="width:100%;">
 		<strong> Box 1: </strong> <br>
-		<textarea id="terminal1" name="terminal" rows="12" cols="80" style="width:100%;">integral(x)</textarea>
-		<textarea id="output1" name="terminal" rows="12" cols="80" style="width:100%;"></textarea>
+		<textarea id="terminal1" name="terminal" rows="4" cols="80" style="width:100%;">integral(x)</textarea>
+		<textarea id="output1" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
 		<input id="execute" name="execute" value="&#x25B6;" onclick="executeJS(1);" type="button">
 
 	  </div>
 
+	  </br>
+
 	  <div id="userinput2">
 		<strong> Box 2: </strong> <br>
-		<textarea id="terminal2" name="terminal" rows="12" cols="80" style="width:100%;">integral(x^2)</textarea>
-		<textarea id="output2" name="terminal" rows="12" cols="80" style="width:100%;"></textarea>
+		<textarea id="terminal2" name="terminal" rows="4" cols="80" style="width:100%;">integral(x^2)</textarea>
+		<textarea id="output2" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
 		<input id="execute" name="execute" value="&#x25B6;" onclick="executeJS(2);" type="button">
 	  </div>
 
