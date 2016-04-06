@@ -32,47 +32,16 @@
 	<script type="text/javascript" language="javascript">
 	  // <![CDATA[
 	  
-	  function showInfo (clicked) {
-		var pageInfoString = '';
-		var elementInfoString = '';
-		$('pageInfo').hide();
-		$('elementInfo').hide();
-		
-		pageInfoString = '<strong>Page Info:<\/strong> <br />' +
-		  "Document.title = " + document.title.escapeHTML() + '<br />' +
-		  "Document.URL = " + document.URL.escapeHTML() + '<br />' +
-		  "Prototype.Version = " + Prototype.Version + '<br />' +
-		  "Scriptaculous.Version = " + Scriptaculous.Version + '<br />';
-		$('pageInfo').update(pageInfoString);
-		$('pageInfo').show();
-		
-		if (clicked) {
-		  var elem = $(clicked);
-		  elementInfoString = '<br/><strong>Element Info:<\/strong> <br />' +
-			"Element.id = " + elem.id + '<br />' +
-			"Element.className = " + elem.className + '<br />' +
-			"Element.inspect = " + elem.inspect().escapeHTML() + '<br />' +
-			"Element.ancestors = " + elem.ancestors().inspect().escapeHTML() + '<br />';
-		}
-		$('elementInfo').update(elementInfoString);
-		$('elementInfo').show();
-		
-	  }
 	  
-	  function executeJS () {
-		showInfo();
+	  function executeJS (whichTerminal) {
 		var errorBox = $('errormessage');
 		var sandbox = $('sandbox');
 		var jsResult = $('jsResult');
 		errorBox.hide();
-		jsResult.hide();
 		try {
-		  var result = eval($('terminal').value);
-		  if ($F('showResult')) {
-			result = "<br /><strong>JavaScript Result = <\/strong>" + result;
-			jsResult.update(result);
-			jsResult.show();
-		  }
+		  var result = run($('terminal' + whichTerminal).value);
+		  //alert(result);
+		  $('output' + whichTerminal).value = result
 		}
 		catch (err) {
 		  var errDesc = err;
@@ -82,7 +51,6 @@
 	  }
 	  
 	  document.observe("dom:loaded", function() {
-		showInfo();
 	  });
 	  
 	  // ]]>
@@ -92,54 +60,32 @@
   <body>
 	<div id="main">
 	  <div id="banner">
-		<div id="bannertext">JavaScript Sandbox</div>
-		<div id="bannerlinks">
-		  <a href="http://www.w3schools.com/jsref/default.asp" target="_blank">JavaScript</a>
-		  |
-		  <a href="http://www.prototypejs.org/api" target="_blank">Prototype</a>
-		  |
-		  <a href="http://script.aculo.us/" target="_blank">Scriptaculous</a>
-		</div>
-		<div style="clear:both;"></div>
-	  </div>
+		
 	  
-	  <div id="info">
-		<div id="pageInfo" style=""><strong>Page Info:</strong> <br>Document.title = JavaScript Sandbox<br>Document.URL = http://railsdotnext.com/experiment/jssandbox.html<br>Prototype.Version = 1.6.0.3<br>Scriptaculous.Version = 1.8.2<br></div>
-		<div id="elementInfo" style=""></div>
-		<div id="jsResult" style="display:none;"></div>
-	  </div>
-	  
-	  <div id="sandbox" onclick="showInfo(this)">This is the sandbox. Click inside this box to get element info.</div>
-	  
-	  <div id="sandboxWidgets">
-		<input id="button1" name="button1" value="A Button" type="button">
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input id="text1" name="text1" value="Some text in a box" type="text">
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input id="button2" name="button2" value="Another Button" type="button">
-	  </div>
 	  
 	  <div id="errormessage" style="display:none;">Error messages go here</div>
 	  
 	  <div id="userinput">
-		<strong> Enter your javascript code below: </strong> <br>
-		<textarea id="terminal" name="terminal" rows="12" cols="80">// Show timestamp in sandbox
-var output = "";
-output = Date();
-$('sandbox').update(output);
+		<strong> Box 1: </strong> <br>
+		<textarea id="terminal1" name="terminal" rows="12" cols="80">integral(x)</textarea> <br><br>
+		<textarea id="output1" name="terminal" rows="12" cols="80"></textarea>
+		</br>
+		<input id="execute" name="execute" value="&#x25B6;" onclick="executeJS(1);" type="button">
+		<br>
 
-// Set onclick function for "A Button"
-var b1 = $('button1');
-b1.onclick = function() { $('sandbox').highlight(); }
-</textarea> <br><br>
-		<input id="execute" name="execute" value="Execute" onclick="executeJS();" type="button">
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input id="showResult" name="showResult" value="1" type="checkbox"> Show returned value of JavaScript code
 	  </div>
+
+	  <div id="userinput2">
+		<strong> Box 2: </strong> <br>
+		<textarea id="terminal2" name="terminal" rows="12" cols="80">integral(x^2)</textarea> <br><br>
+		<textarea id="output2" name="terminal" rows="12" cols="80"></textarea>
+		</br>
+		<input id="execute" name="execute" value="&#x25B6;" onclick="executeJS(2);" type="button">
+		<br>
+
+	  </div>
+
 	  
-	  <div id="footer">
-		© Aaron Brown | aaron + (at) + railsdotnext.com | <a href="http://railsdotnext.com/">railsdotnext.com</a>
-	  </div>
 	</div>
 
 <script type="text/javascript">
@@ -154,5 +100,10 @@ pageTracker._trackPageview();
 </script>
 	
   
+<script src="integralsTab/itab.js"></script>
+<script src="bigInteger.js"></script>
+<script src="eigenMath.js"></script>
+<script src="primetab/primetab.js"></script>
+
 
 </body></html>
