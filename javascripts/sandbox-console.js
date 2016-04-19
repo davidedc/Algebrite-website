@@ -133,8 +133,8 @@ var Sandbox = {
 			
 			// Evaluate the command and store the eval result, adding some basic classes for syntax-highlighting
 			try {
-				var algebriteCommand = "run('" + command + "');"
-				algebriteCommand = algebriteCommand.replace("\n","');run('")
+				var algebriteCommand = "Algebrite.run('" + command + "');"
+				algebriteCommand = algebriteCommand.replace("\n","');Algebrite.run('")
 				item.result = this.get('iframe') ? this.iframeEval(algebriteCommand) : eval.call(window, algebriteCommand);
 				if ( _.isUndefined(item.result) ) item._class = "undefined";
 				if ( _.isNumber(item.result) ) item._class = "number";
