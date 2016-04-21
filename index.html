@@ -20,6 +20,7 @@
         <p>Computer Algebra System in Javascript. <a href="https://github.com/davidedc/Algebrite">view on GitHub</a></p>
 
         <p class="view"><strong><a href="#Features">Features</a></strong>
+        </br><small><a href="#API and scripting">Usage via API or custom scripting</a>
         </br><small><a href="#Arbitrary-precision arithmetic">Arbitrary-precision arithmetic</a>
         </br><a href="#Complex quantities">Complex quantities</a>
         </br><a href="#Simplification">Simplification</a>
@@ -73,20 +74,42 @@ Algebrite is...
 
 <p>...these are just some of the features. For an organic view please check the <a href="./reference.html" target="_blank">function reference</a>.</p>
 
-<h3>
-<a id="Arbitrary-precision arithmetic" class="anchor" href="#Arbitrary-precision arithmetic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arbitrary-precision arithmetic</h3>
+    <div style="width:100%; margin-top:20px;">
+        <h3>
+        <a id="API and scripting" class="anchor" href="#API and scripting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage via API or custom scripting language</h3>
 
-    <div style="width:100%;">
+        <p>Algebrite comes with its own scripting language, but all functions are also exposed as API for easier JS usage. See <a href="./reference.html" target="_blank">function reference</a> for API description.</p>
+
+        <div style="width:49%; float:left; ">
+        <textarea id="terminal120" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;"># internal scripting language
+x+x</textarea>
+        <textarea id="output120" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+        <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(120);" type="button">
+        </div>
+
+        <div style="width:49%; float:left; margin-left:10px;">
+        <textarea id="terminal121" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">// standard javascript via API
+Algebrite.run('x + x');</textarea>
+        <textarea id="output121" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+        <input name="execute" value="&#x25B6;" onclick="executeJS(121);" type="button">
+        </div>
+    </div>
+
+
+    <div style="width:100%; float:left; margin-top:20px;">
+    <h3>
+    <a id="Arbitrary-precision arithmetic" class="anchor" href="#Arbitrary-precision arithmetic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arbitrary-precision arithmetic</h3>
+
     <textarea id="terminal1" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">100! # gets long after 50000!</textarea>
     <textarea id="output1" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(1);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(1);" type="button">
     </div>
     </br>
 
     <div style="width:100%;">
     <textarea id="terminal14" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">factor(100!)</textarea>
     <textarea id="output14" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(14);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(14);" type="button">
     </div>
     </br>
 
@@ -100,7 +123,7 @@ numerator(1/a+1/b)
 denominator(1/(x-1)/(x-2))
 rationalize(a/b+b/a)</textarea>
     <textarea id="output100" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(100);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(100);" type="button">
     </div>
     </br>
 
@@ -113,7 +136,7 @@ B=sqrt(2)*exp(i*pi/4)
 A-B
 rect</textarea>
     <textarea id="output7" name="terminal" rows="3" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(7);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(7);" type="button">
     </div>
     </br>
 
@@ -126,7 +149,7 @@ rect</textarea>
 simplify(a*b+a*c)
 simplify(n!/(n+1)!)</textarea>
     <textarea id="output2" name="terminal" rows="3" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(2);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(2);" type="button">
     </div>
     </br>
 
@@ -136,7 +159,7 @@ simplify(n!/(n+1)!)</textarea>
     <div style="width:100%;">
     <textarea id="terminal3" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">expand((x-1)(x-2)^3)</textarea>
     <textarea id="output3" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(3);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(3);" type="button">
     </div>
     </br>
 
@@ -146,7 +169,7 @@ simplify(n!/(n+1)!)</textarea>
     <div style="width:100%;">
     <textarea id="terminal4" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">subst( u, exp(x), 2*exp(x) )</textarea>
     <textarea id="output4" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(4);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(4);" type="button">
     </div>
     </br>
 
@@ -158,14 +181,14 @@ simplify(n!/(n+1)!)</textarea>
 roots(a*x^2+b*x+c)
 roots(x^4+1) # this one has no real roots, thows error, needs nroots</textarea>
     <textarea id="output16" name="terminal" rows="3" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(16);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(16);" type="button">
     </div>
     </br>
 
     <div style="width:100%;">
     <textarea id="terminal17" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">nroots(x^4+1)</textarea>
     <textarea id="output17" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(17);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(17);" type="button">
     </div>
     </br>
 
@@ -178,7 +201,7 @@ v=17000*"mile"/"hr"
 t=8*"min"/(60*"min"/"hr")
 v/t</textarea>
     <textarea id="output5" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(5);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(5);" type="button">
     </div>
     </br>
 
@@ -194,7 +217,7 @@ adj(A)
 det(A)
 inv(A)-adj(A)/det(A)</textarea>
     <textarea id="output6" name="terminal" rows="6" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(6);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(6);" type="button">
     </div>
     </br>
 
@@ -207,7 +230,7 @@ inv(A)-adj(A)/det(A)</textarea>
 r=sqrt(x^2+y^2)
 d(r,(x,y))</textarea>
     <textarea id="output8" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(8);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(8);" type="button">
     </div>
     </br>
 
@@ -220,7 +243,7 @@ F=(x+2y,3x+4y)
 # now the gradient
 d(F,(x,y))</textarea>
     <textarea id="output9" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(9);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(9);" type="button">
     </div>
     </br>
 
@@ -231,7 +254,7 @@ d(F,(x,y))</textarea>
     <textarea id="terminal10" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">integral(x^2)
 integral(x*y,x,y)</textarea>
     <textarea id="output10" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(10);" type="button">
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(10);" type="button">
     </div>
     </br>
 
@@ -241,7 +264,7 @@ integral(x*y,x,y)</textarea>
     <div style="width:100%;">
     <textarea id="terminal11" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">defint(x^2,y,0,sqrt(1-x^2),x,-1,1)</textarea>
     <textarea id="output11" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(11);" type="button"> <small>...give it a few seconds</small>
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(11);" type="button"> <small>...give it a few seconds</small>
     </div>
     </br>
 
@@ -251,7 +274,7 @@ integral(x*y,x,y)</textarea>
 f=circexp(f)
 defint(f,t,0,2*pi)</textarea>
     <textarea id="output12" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="executeJS(12);" type="button"> <small>...give it a few seconds</small>
+    <input name="execute" value="&#x25B6;" onclick="executeAlgebriteScript(12);" type="button"> <small>...give it a few seconds</small>
     </div>
     </br>
 
@@ -318,23 +341,35 @@ Also you might want to check another fork of EigenMath: <a href="http://smib.sou
   <script type="text/javascript" language="javascript">
     
     
-    function executeJS (whichTerminal) {
-    var sandbox = $('sandbox');
-    var jsResult = $('jsResult');
-    try {
-      var result = Algebrite.run($('#terminal' + whichTerminal).val());
-      //alert(result);
-      $('#output' + whichTerminal).val(result)
-    }
-    catch (err) {
-      var errDesc = err;
-      errorBox.update('<h4>Error!<\/h4><code>' + errDesc + '<\/code>' );
-      errorBox.show();
-    }
+    function executeAlgebriteScript (whichTerminal) {
+        var sandbox = $('sandbox');
+        var jsResult = $('jsResult');
+        try {
+          var result = Algebrite.run($('#terminal' + whichTerminal).val());
+          //alert(result);
+          $('#output' + whichTerminal).val(result)
+        }
+        catch (err) {
+          var errDesc = err;
+          errorBox.update('<h4>Error!<\/h4><code>' + errDesc + '<\/code>' );
+          errorBox.show();
+        }
     }
     
-    //document.observe("dom:loaded", function() {
-    //});
+    function executeJS (whichTerminal) {
+        var sandbox = $('sandbox');
+        var jsResult = $('jsResult');
+        try {
+          var result = eval($('#terminal' + whichTerminal).val());
+          //alert(result);
+          $('#output' + whichTerminal).val(result)
+        }
+        catch (err) {
+          var errDesc = err;
+          errorBox.update('<h4>Error!<\/h4><code>' + errDesc + '<\/code>' );
+          errorBox.show();
+        }
+    }
 
     
   </script>

@@ -162,6 +162,7 @@ header {
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
+  margin-top: -20px;
 }
 
 header ul {
@@ -224,7 +225,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:565px;
   float:right;
   padding-bottom:50px;
 }
