@@ -347,7 +347,7 @@ Also you might want to check another fork of EigenMath: <a href="http://smib.sou
         try {
           var textToBeExecuted = $('#terminal' + whichTerminal).val();
           var result;
-          if (/Algebrite\.[a-z]/.test(textToBeExecuted)) {
+          if (/Algebrite\.[a-z]/.test(textToBeExecuted) || /;[ \t]*$/.test(textToBeExecuted)) {
             result = eval(textToBeExecuted);
           }
           else {

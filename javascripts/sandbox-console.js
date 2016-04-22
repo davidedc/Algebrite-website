@@ -133,8 +133,17 @@ var Sandbox = {
 			
 			// Evaluate the command and store the eval result, adding some basic classes for syntax-highlighting
 			try {
-				var algebriteCommand = "Algebrite.run('" + command + "');"
-				algebriteCommand = algebriteCommand.replace("\n","');Algebrite.run('")
+				var algebriteCommand;
+
+
+		        if (/Algebrite\.[a-z]/.test(command) || /;[ \t]*$/.test(command)) {
+					algebriteCommand = command;
+		        } else {
+					algebriteCommand = "Algebrite.run('" + command + "');";
+					algebriteCommand = algebriteCommand.replace("\n","');Algebrite.run('");
+		        }
+
+
 				item.result = this.get('iframe') ? this.iframeEval(algebriteCommand) : eval.call(window, algebriteCommand);
 				if ( _.isUndefined(item.result) ) item._class = "undefined";
 				if ( _.isNumber(item.result) ) item._class = "number";
@@ -168,7 +177,7 @@ var Sandbox = {
 			this.resultPrefix = opts.resultPrefix || "  => ";
 			this.tabCharacter = opts.tabCharacter || "\t";
 			this.placeholder = opts.placeholder || "...type here some expressions and hit enter (:help for info)";
-			this.helpText = opts.helpText || "examples: '100!', 'integral(x^2)', 'nroots(x^4+1)'. \n[up/down] to scroll through history, ':clear' to reset it. \n[alt + return/up/down] for returns and multi-line editing.";
+			this.helpText = opts.helpText || "examples: '100!', 'integral(x^2)', 'nroots(x^4+1)',\n'Algebrite.expand(\"(x+1)^4\").toString();'. \n[up/down] to scroll through history, ':clear' to reset it. \n[alt + return/up/down] for returns and multi-line editing.";
 
 			// Bind to the model's change event to update the View
 			this.model.bind("change", this.update);
