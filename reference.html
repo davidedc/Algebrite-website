@@ -246,84 +246,84 @@ If x is true then continue, else stop.
 Use A=B to check that A equals B.
 
 <p>
-<h1><a name="choose">choose(<i>n,k</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="choose">choose(<i>n,k</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/choose.coffee">source</a></small></h1></h1>
 Returns the number of combinations of n items taken k at a time.
 
 <p>
-<h1><a name="circexp">circexp(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="circexp">circexp(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/circexp.coffee">source</a></small></h1></h1>
 Returns expression x with circular and hyperbolic functions converted to exponential forms.
 Sometimes this will simplify an expression.
 
 <p>
-<h1><a name="coeff">coeff(<i>p,x,n</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="coeff">coeff(<i>p,x,n</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/coeff.coffee">source</a></small></h1></h1>
 Returns the coefficient of x to the n in polynomial p.
 The x argument can be omitted for polynomials in x.
 
 <p>
-<h1><a name="cofactor">cofactor(<i>m,i,j</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="cofactor">cofactor(<i>m,i,j</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/cofactor.coffee">source</a></small></h1></h1>
 Let c be the cofactor matrix of matrix m, i.e., tranpose(c) = adj(m).
 This function returns c[i,j].
 
 <p>
-<h1><a name="conj">conj(<i>z</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="conj">conj(<i>z</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/conj.coffee">source</a></small></h1></h1>
 Returns the complex conjugate of z.
 
 <p>
-<h1><a name="contract">contract(<i>a,i,j</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="contract">contract(<i>a,i,j</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/contract.coffee">source</a></small></h1></h1>
 Returns "a" summed over indices i and j.
 If i and j are omitted then 1 and 2 are used.
 contract(m) is equivalent to the trace of matrix m.
 
 <p>
-<h1><a name="cos">cos(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="cos">cos(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/cos.coffee">source</a></small></h1></h1>
 Returns the cosine of x.
 
 <p>
-<h1><a name="cosh">cosh(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="cosh">cosh(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/cosh.coffee">source</a></small></h1></h1>
 Returns the hyperbolic cosine of x.
 
 <p>
-<h1><a name="cross">cross(<i>u,v</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="cross">cross(<i>u,v</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22cross+definition%22&type=Code">source</a></small></h1></h1>
 Returns the cross product of vectors u and v.
 
 <p>
-<h1><a name="curl">curl(<i>u</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="curl">curl(<i>u</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22curl+definition%22&type=Code">source</a></small></h1></h1>
 Returns the curl of vector u.
 
 <p>
-<h1><a name="d">d(<i>f,x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="d">d(<i>f,x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/derivative.coffee">source</a></small></h1></h1>
 Returns the partial derivative of f with respect to x.
 
 <p>
-<h1><a name="defint">defint(<i>f,x,a,b</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="defint">defint(<i>f,x,a,b</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/defint.coffee">source</a></small></h1></h1>
 Returns the definite integral of f with respect to x
 evaluated from "a" to b.
 The argument list can be extended for multiple integrals.
 For example, defint(f,x,a,b,y,c,d).
 
 <p>
-<h1><a name="deg">deg(<i>p,x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="deg">deg(<i>p,x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/degree.coffee">source</a></small></h1></h1>
 Returns the degree of polynomial p(x).
 
 <p>
-<h1><a name="denominator">denominator(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="denominator">denominator(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/denominator.coffee">source</a></small></h1></h1>
 Returns the denominator of expression x.
 
 <p>
-<h1><a name="det">det(<i>m</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="det">det(<i>m</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/det.coffee">source</a></small></h1></h1>
 Returns the determinant of matrix m.
 
 <p>
-<h1><a name="dim">dim(<i>a,n</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="dim">dim(<i>a,n</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22dim+definition%22&type=Code">source</a></small></h1></h1>
 Returns the cardinality of the nth index of tensor "a".
 
 <p>
-<h1><a name="do">do(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="do">do(<i>a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22do+definition%22&type=Code">source</a></small></h1></h1>
 Evaluates each argument from left to right.
 Returns the result of the last argument.
 
 <p>
-<h1><a name="dot">dot(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="dot">dot(<i>a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22inner+definition%22&type=Code">source</a></small></h1></h1>
 Returns the dot or inner product of tensors.
 
 <p>
@@ -332,7 +332,7 @@ Draws a graph of f(x).
 Drawing ranges can be set with xrange and yrange.
 
 <p>
-<h1><a name="eigen">eigen(<i>m</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="eigen">eigen(<i>m</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/eigen.coffee">source</a></small></h1></h1>
 <h1><tt>eigenval(<i>m</i>)</tt></h1>
 <h1><tt>eigenvec(<i>m</i>)</tt></h1>
 These functions compute eigenvalues and eigenvectors numerically.
@@ -384,35 +384,35 @@ Example 2: Check the relation A = Q<sup>T</sup>DQ.
 </pre>
 
 <p>
-<h1><a name="erf">erf(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="erf">erf(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/erf.coffee">source</a></small></h1></h1>
 Error function of x.
 
 <p>
-<h1><a name="erfc">erfc(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="erfc">erfc(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/erfc.coffee">source</a></small></h1></h1>
 Complementary error function of x.
 
 <p>
-<h1><a name="eval">eval(<i>f,x,a</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="eval">eval(<i>f,x,a</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/eval.coffee">source</a></small></h1></h1>
 Returns f evaluated at x=a.
 
 <p>
-<h1><a name="exp">exp(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="exp">exp(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22exp+definition%22&type=Code">source</a></small></h1></h1>
 Returns the exponential of x.
 
 <p>
-<h1><a name="expand">expand(<i>r,x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="expand">expand(<i>r,x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/expand.coffee">source</a></small></h1></h1>
 Returns the partial fraction expansion of the ratio of polynomials r in  x.
 
 <p>
-<h1><a name="expcos">expcos(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="expcos">expcos(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/expcos.coffee">source</a></small></h1></h1>
 Returns the exponential cosine of x.
 
 <p>
-<h1><a name="expsin">expsin(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="expsin">expsin(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/expsin.coffee">source</a></small></h1></h1>
 Returns the exponential sine of x.
 
 <p>
-<h1><a name="factor">factor(<i>n</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="factor">factor(<i>n</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/factor.coffee">source</a></small></h1></h1>
 Factors integer n.
 
 <p>
@@ -424,24 +424,24 @@ The argument list can be extended for multivariate polynomials.
 For example, factor(p,x,y) factors p over x and then over y.
 
 <p>
-<h1><a name="factorial">factorial(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="factorial">factorial(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/factorial.coffee">source</a></small></h1></h1>
 Can be entered as x!
 
 <p>
-<h1><a name="filter">filter(<i>f,a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="filter">filter(<i>f,a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/filter.coffee">source</a></small></h1></h1>
 Returns f excluding any terms containing a, b, etc.
 
 <p>
-<h1><a name="float">float(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="float">float(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/float.coffee">source</a></small></h1></h1>
 Converts rational numbers and integers to floating point values.
 The symbol pi is also converted.
 
 <p>
-<h1><a name="floor">floor(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="floor">floor(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/floor.coffee">source</a></small></h1></h1>
 Returns the largest integer not greater than x.
 
 <p>
-<h1><a name="for">for(<i>i,j,k,a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="for">for(<i>i,j,k,a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/for.coffee">source</a></small></h1></h1>
 For i equals j through k evaluate a, b, etc.
 The original value of the index variable is restored after "for" completes,
 it is not clobbered.
@@ -454,122 +454,122 @@ float(y)
 </pre>
 
 <p>
-<h1><a name="gcd">gcd(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="gcd">gcd(<i>a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/gcd.coffee">source</a></small></h1></h1>
 Returns the greatest common divisor.
 
 <p>
-<h1><a name="hermite">hermite(<i>x,n</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="hermite">hermite(<i>x,n</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/hermite.coffee">source</a></small></h1></h1>
 Returns the nth Hermite polynomial in x.
 
 <p>
-<h1><a name="hilbert">hilbert(<i>n</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="hilbert">hilbert(<i>n</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/hilbert.coffee">source</a></small></h1></h1>
 Returns an n by n Hilbert matrix.
 
 <p>
-<h1><a name="imag">imag(<i>z</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="imag">imag(<i>z</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/imag.coffee">source</a></small></h1></h1>
 Returns the imaginary part of complex z.
 
 <p>
-<h1><a name="inner">inner(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="inner">inner(<i>a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/inner.coffee">source</a></small></h1></h1>
 Returns the inner product of tensors.
 Same as the dot product.
 
 <p>
-<h1><a name="integral">integral(<i>f,x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="integral">integral(<i>f,x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/integral.coffee">source</a></small></h1></h1>
 Returns the integral of f with respect to x.
 
 <p>
-<h1><a name="inv">inv(<i>m</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="inv">inv(<i>m</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/inv.coffee">source</a></small></h1></h1>
 Returns the inverse of matrix m.
 
 <p>
-<h1><a name="isprime">isprime(<i>n</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="isprime">isprime(<i>n</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/isprime.coffee">source</a></small></h1></h1>
 Returns 1 if n is a prime number, returns zero otherwise.
 
 <p>
-<h1><a name="laguerre">laguerre(<i>x,n,a</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="laguerre">laguerre(<i>x,n,a</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/laguerre.coffee">source</a></small></h1></h1>
 Returns the nth Laguerre polynomial in x.
 If "a" is omitted then a=0 is used.
 
 <p>
-<h1><a name="lcm">lcm(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="lcm">lcm(<i>a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/lcm.coffee">source</a></small></h1></h1>
 Returns the least common multiple.
 
 <p>
-<h1><a name="leading">leading(<i>p,x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="leading">leading(<i>p,x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/leading.coffee">source</a></small></h1></h1>
 Returns the leading coefficient of polynomial p in x.
 
 <p>
-<h1><a name="legendre">legendre(<i>x,n,m</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="legendre">legendre(<i>x,n,m</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/legendre.coffee">source</a></small></h1></h1>
 Returns the nth Legendre polynomial in x.
 If m is omitted then m=0 is used.
 
 <p>
-<h1><a name="log">log(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="log">log(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/log.coffee">source</a></small></h1></h1>
 Returns the natural logarithm of x.
 
 <p>
-<h1><a name="mag">mag(<i>z</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="mag">mag(<i>z</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/mag.coffee">source</a></small></h1></h1>
 Returns the magnitude of complex z.
 
 <p>
-<h1><a name="mod">mod(<i>a,b</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="mod">mod(<i>a,b</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/mod.coffee">source</a></small></h1></h1>
 Returns the remainder of the result of "a" divided by b.
 
 <p>
-<h1><a name="not">not(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="not">not(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22not+definition%22&type=Code">source</a></small></h1></h1>
 Returns the logical negation of x.
 
 <p>
-<h1><a name="nroots">nroots(<i>p,x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="nroots">nroots(<i>p,x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/nroots.coffee">source</a></small></h1></h1>
 Returns all of the roots, both real and complex,
 of polynomial p in x.
 The roots are computed numerically.
 The coefficients of p can be real or complex.
 
 <p>
-<h1><a name="numerator">numerator(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="numerator">numerator(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/numerator.coffee">source</a></small></h1></h1>
 Returns the numerator of expression x.
 
 <p>
-<h1><a name="or">or(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="or">or(<i>a,b,...</i>) <a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22or+definition%22&type=Code">source</a></small></h1></h1>
 Logical-or of predicate expressions.
 
 <p>
-<h1><a name="outer">outer(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="outer">outer(<i>a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/outer.coffee">source</a></small></h1></h1>
 Returns the outer product of tensors.
 Also known as the tensor product.
 
 <p>
-<h1><a name="polar">polar(<i>z</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="polar">polar(<i>z</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/polar.coffee">source</a></small></h1></h1>
 Returns complex z in polar form.
 
 <p>
-<h1><a name="prime">prime(<i>n</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="prime">prime(<i>n</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/prime.coffee">source</a></small></h1></h1>
 Returns the nth prime number.
 The domain of n is 1 to 10000.
 
 <p>
-<h1><a name="print">print(<i>a,b,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="print">print(<i>a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/print.coffee">source</a></small></h1></h1>
 Evaluate expressions and print the results.
 Useful for printing from inside a "for" loop.
 
 <p>
-<h1><a name="product">product(<i>i,j,k,f</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="product">product(<i>i,j,k,f</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/product.coffee">source</a></small></h1></h1>
 For i equals j through k evaluate f.
 Returns the product of all f.
 
 <p>
-<h1><a name="quote">quote(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="quote">quote(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22quote+definition%22&type=Code">source</a></small></h1></h1>
 Returns expression x without evaluating it first.
 
-<p><h1><a name="quotient">quotient(<i>p,q,x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<p><h1><a name="quotient">quotient(<i>p,q,x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/quotient.coffee">source</a></small></h1></h1>
 Returns the quotient of polynomial p(x) over q(x).
 The last argument can be omitted for polynomials in x.
 The remainder can be calculated by p-q*quotient(p,q).
 
 <p>
-<h1><a name="rank">rank(<i>a</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
+<h1><a name="rank">rank(<i>a</i>) <small><a href="https://github.com/davidedc/Algebrite/search?utf8=%E2%9C%93&q=%22rank+definition%22&type=Code">source</a></small></h1></h1>
 Returns the number of indices that tensor "a" has.
 
 <p>
