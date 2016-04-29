@@ -177,10 +177,11 @@ simplify(n!/(n+1)!)</textarea>
 <a id="Symbolic and numeric roots" class="anchor" href="#Symbolic and numeric roots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Symbolic and numeric roots</h3>
 
     <div style="width:100%;">
-    <textarea id="terminal16" name="terminal" rows="3" cols="80" style="width:100%;margin-bottom:-5px;">roots(3 x + 12 + y = 24)
-roots(a*x^2+b*x+c)
-roots(x^4+1) # this one has no real roots, thows error, needs nroots</textarea>
-    <textarea id="output16" name="terminal" rows="3" cols="80" style="width:100%;"></textarea>
+    <textarea id="terminal16" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;">roots(3 x + 12 + y = 24) # first degree (in x)
+roots(a*x^2+b*x+c) # second degree
+roots(x^3+d) # third degree is solved too
+roots(x^4+1) # this fourth degree has no real roots, thows error, needs nroots</textarea>
+    <textarea id="output16" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
     <input name="execute" value="&#x25B6;" onclick="execute(16);" type="button">
     </div>
     </br>
