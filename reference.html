@@ -104,6 +104,7 @@ draw (unavailable)<br>
 <a href="#rect">rect</a><br>
 <a href="#roots">roots</a><br>
      </tt></td><td>&nbsp;</td><td valign="top"><tt>
+<a href="#shape">shape</a><br>
 <a href="#simplify">simplify</a><br>
 <a href="#sin">sin</a><br>
 <a href="#sinh">sinh</a><br>
@@ -592,6 +593,10 @@ The polynomial p should be factorable over integers.
 Returns a vector for multiple roots.
 Individual roots can be obtained using component notation, i.e.,
 r1=roots(p,x)[1].
+
+<p>
+<h1><a name="shape">shape(<i>x</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/shape.coffee">source</a></small></h1></h1>
+Returns a vector with the "shape" of the input tensor, i.e. a vector with an integer for each dimension (representing the size of each dimension). For example vectors are tensors of one dimension, so a vector with one integer (the length of the vector) is returned. Matrixes are 2-dimensional tensors, so a vector with two integers is returned (rows, columns), etc.
 
 <p>
 <h1><a name="simplify">simplify(<i>x</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/abs.coffee">source</a></small></h1>--></h1>
