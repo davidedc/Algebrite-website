@@ -444,9 +444,12 @@ Returns the largest integer not greater than x.
 
 <p>
 <h1><a name="for">for(<i>i,j,k,a,b,...</i>) <small><a href="https://github.com/davidedc/Algebrite/blob/master/sources/for.coffee">source</a></small></h1></h1>
-For i equals j through k evaluate a, b, etc.
-The original value of the index variable is restored after "for" completes,
-it is not clobbered.
+For i starting from the integer j through to the integer k (inclusive of both ends if they are different, see examples): evaluate a, then evaluate b, etc.<br>
+j and k must be integers but either of them can be negative, and the can be equal, e.g.<br>
+...if j < k e.g. j = -1 and k = 1 then i goes through the values -1,0,1<br>
+...if j > k e.g. j = 1 and k = -1 then i goes through the values 1,0,-1<br>
+...if j = k e.g. j = 3 and k = 3 (or j = -3 and k = -3) then i goes through the only value 3 (or -3, respectively)<br>
+The index variable is not clobbered i.e. the original value of the index variable is restored after "for" completes.<br>
 The following script uses "for" to compute pi to six digits.
 <pre>
 x=0
