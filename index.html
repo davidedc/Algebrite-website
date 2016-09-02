@@ -24,7 +24,7 @@
 
         <p class="view"><strong><a href="#Features">Features</a></strong>
         </br><small><a href="#API and scripting">Usage via API or custom scripting</a>
-        </br><small><a href="#Arbitrary-precision arithmetic">Arbitrary-precision arithmetic</a>
+        </br><a href="#Arbitrary-precision arithmetic">Arbitrary-precision arithmetic</a>
         </br><a href="#Complex quantities">Complex quantities</a>
         </br><a href="#Simplification">Simplification</a>
         </br><a href="#Expansion">Expansion</a>
@@ -76,32 +76,31 @@ Algebrite is...
 
 <p>...these are just some of the features. For an organic view please check the <a href="./reference.html" target="_blank">function reference</a>.</p>
 
-    <div style="width:100%; margin-top:20px;">
-        <h3>
-        <a id="API and scripting" class="anchor" href="#API and scripting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage via API or custom scripting language</h3>
+    <h3>
+    <a id="API and scripting" class="anchor" href="#API and scripting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage via API or custom scripting language</h3>
 
-        <p>Algebrite comes with its own scripting language, but all functions are also exposed as API for standard JS integration. See <a href="./reference.html" target="_blank">function reference</a> for API description.</p>
+    <p>Algebrite comes with its own scripting language, but all functions are also exposed as API for standard JS integration. See <a href="./reference.html" target="_blank">function reference</a> for API description.</p>
 
-        <div style="width:49%; float:left; ">
-        <textarea id="terminal120" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;"># internal scripting language
+    <div style="width:49%; float:left; ">
+    <textarea id="terminal120" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;"># internal scripting language
 x+x</textarea>
-        <textarea id="output120" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
-        <input name="execute" value="&#x25B6;" onclick="execute(120);" type="button">
-        </div>
+    <textarea id="output120" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(120);" type="button">
+    </div>
 
-        <div style="width:49%; float:left; margin-left:10px;">
-        <textarea id="terminal121" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">// standard javascript via API
+    <div style="width:49%; float:left; margin-left:2%;margin-bottom:20px;">
+    <textarea id="terminal121" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">// standard javascript via API
 Algebrite.run('x + x');</textarea>
-        <textarea id="output121" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
-        <input name="execute" value="&#x25B6;" onclick="execute(121);" type="button">
-        </div>
+    <textarea id="output121" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(121);" type="button">
     </div>
 
 
-    <div style="width:100%; float:left; margin-top:20px;">
+    <div style="clear: both;"></div>
     <h3>
-    <a id="Arbitrary-precision arithmetic" class="anchor" href="#Arbitrary-precision arithmetic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Arbitrary-precision arithmetic</h3>
+    <a id="Arbitrary-precision arithmetic" class="anchor" href="#Arbitrary-precision arithmetic" aria-hidden="true" ><span aria-hidden="true" class="octicon octicon-link"></span></a>Arbitrary-precision arithmetic</h3>
 
+    <div style="width:100%;">
     <textarea id="terminal1" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">100! # gets long after 50000!</textarea>
     <textarea id="output1" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
     <input name="execute" value="&#x25B6;" onclick="execute(1);" type="button">
@@ -292,7 +291,6 @@ defint(f,t,0,2*pi)</textarea>
     </br>
 
 
-
 <h3>
 <a id="References" class="anchor" href="#References" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Credits and links</h3>
 
@@ -317,7 +315,6 @@ Also you might want to check another fork of EigenMath: <a href="http://smib.sou
 
 </p>
 
-
 <p>The sandbox is an adaptation of the <a href="https://github.com/openexchangerates/javascript-sandbox-console">javascript-sandbox-console by openexchangerates</a>. The "pentakis dodecahedron" logo is by <a href="https://thenounproject.com/koutchinski/">Felix Koutchinski</a>.</p>
 
 
@@ -331,9 +328,8 @@ Also you might want to check another fork of EigenMath: <a href="http://smib.sou
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
 
 <p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-      </section>
-
 -->
+      </section>
 
       <!--
       <footer>
@@ -342,8 +338,6 @@ Also you might want to check another fork of EigenMath: <a href="http://smib.sou
       </footer>
       -->
     </div>
-
-
 
     <script src="javascripts/scale.fix.js"></script>
 
