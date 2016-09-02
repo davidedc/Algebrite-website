@@ -178,20 +178,29 @@ simplify(n!/(n+1)!)</textarea>
 <h3>
 <a id="Symbolic and numeric roots" class="anchor" href="#Symbolic and numeric roots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Symbolic and numeric roots</h3>
 
+    ... symbolic solutions of simple polynomials:
     <div style="width:100%;">
-    <textarea id="terminal16" name="terminal" rows="5" cols="80" style="width:100%;margin-bottom:-5px;">roots(3 x + 12 + y = 24) # first degree (in x)
-roots(a*x^2+b*x+c) # second degree
-roots(x^4 + x^3 + x^2 + x + 1) # third and fourth degree are solved too
-roots(m*x^9 + n) # roots of special polinomials
-roots((x^4+x^3)*(x^4*x^2)) # roots of factorable polinomials</textarea>
-    <textarea id="output16" name="terminal" rows="5" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="execute(16);" type="button"> <small>...give it a few seconds</small>
+    <textarea id="terminal161" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">roots(3 x + 12 + y = 24) # first degree (in x)
+roots(a*x^2+b*x+c) # second degree</textarea>
+    <textarea id="output161" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(161);" type="button">
     </div>
     </br>
 
+    ... symbolic solutions of higher-degree polynomials or special polynomials:
     <div style="width:100%;">
-    <textarea id="terminal17" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">nroots(x^4+1)</textarea>
-    <textarea id="output17" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
+    <textarea id="terminal162" name="terminal" rows="3" cols="80" style="width:100%;margin-bottom:-5px;">roots(x^4 + x^3 + x^2 + x + 1) # third and fourth degree are solved too
+roots(m*x^9 + n) # roots of special polinomials
+roots((x^4+x^3)*(x^4*x^2)) # roots of factorable polinomials</textarea>
+    <textarea id="output162" name="terminal" rows="6" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(162);" type="button"> <small>...give it a few seconds</small>
+    </div>
+    </br>
+
+    ... numeric solutions for even higher-degree irreducible polynomials:
+    <div style="width:100%;">
+    <textarea id="terminal17" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">nroots(x^16+x^15+2)</textarea>
+    <textarea id="output17" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
     <input name="execute" value="&#x25B6;" onclick="execute(17);" type="button">
     </div>
     </br>
