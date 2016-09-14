@@ -1,61 +1,55 @@
-<!doctype html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Algebrite sandbox</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <link rel="stylesheet" href="stylesheets/sandbox.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="utf-8" />
+    <title>Algebrite Sandbox</title>
+    <meta name="author" content="Davide Della Casa"/>
+    <meta name="Description" content="Algebrite sandbox"/>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
+    <script src="./javascripts/sandboxlibs/jquery-1.7.2.min.js"></script>
+    <script src="./javascripts/sandboxlibs/jquery.mousewheel-min.js"></script>
+    <script src="./javascripts/sandboxlibs/jquery.terminal.min.js"></script>
+    <script src="dist/algebrite.bundle-for-browser.js"></script>
+    <link href="./stylesheets/sandbox/jquery.terminal.css" rel="stylesheet"/>
   </head>
-  <body>
+<body>
+
+<script>
+jQuery(document).ready(function($) {
+    var id = 1;
+    $('body').terminal(function(command, term) {
+
+        if (command == 'help') {
+            term.echo('\nExamples:\n  a+a # a comment in scripting mode\n  100!\n  integral(x^2)\n  Algebrite.expand("(x+1)^4"); // js API mode\n');
+            term.echo('Hints:\n  if you use the js API a lot, you might be better off just using the js console of your browser\n');
+            return;
+        }
+
+        try {
+          var algebriteCommand;
 
 
+              if (/Algebrite\.[a-z]/.test(command) || /;[ \t]*$/.test(command)) {
+            algebriteCommand = command;
+              } else {
+            algebriteCommand = "Algebrite.run('" + command + "');";
+            algebriteCommand = algebriteCommand.replace("\n","');Algebrite.run('");
+              }
 
 
-<center>Algebrite sandbox (both Algebrite scripting and Algebrite JS API modes)</br>...end a line with ";" to indicate you are using JS API mode.</center>
-<div id="sandbox" style="margin: 0 auto;">sandbox loading...</div>
+          var result = eval.call(window, algebriteCommand);
+        } catch(error) {
+        }
+        term.echo(result);
 
-
-
-<script src="javascripts/scale.fix.js"></script>
-<script src="dist/algebrite.bundle.js"></script>
-
-
-<!-- The sandbox template -->
-<script type="text/template" id="tplSandbox">
-  <pre class="output"></pre>
-  <div class="input">
-    <textarea rows="1" placeholder="<%= placeholder %>"></textarea>
-  </div>
-</script>
-
-<!-- The command/result template (NB whitespace/line breaks matter inside <pre> tag): -->
-<script type="text/template" id="tplCommand"><% if (! _hidden) { %><span class="command"><%= command %></span>
-<span class="prefix"><%= this.resultPrefix %></span><span class="<%= _class %>"><%= result %></span>
-<% } %></script>
-
-
-<script src="javascripts/sandboxlibs/underscore.min.js"></script>
-<script src="javascripts/sandboxlibs/backbone.min.js"></script>
-<script src="javascripts/sandboxlibs/backbone-localStorage.min.js"></script><!-- opt -->
-<script src="javascripts/sandboxlibs/jquery.min.js"></script>
-
-<script src="javascripts/sandbox-console.js"></script>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    // Create the sandbox:
-    window.sandbox = new Sandbox.View({
-      el : $('#sandbox'),
-      model : new Sandbox.Model()
+    }, {
+        greetings: "Algebrite sandbox (both Algebrite scripting and Algebrite JS API modes)\n • end a line with ';' to indicate you are using JS API mode, otherwise input\n   will be interpreted as an Algebrite script.\n • hit shift-enter for multiple lines (works for Algebrite scripts better)\n\ntype 'help' for help.\n--------------------------------------------------------------------------------\n",
+        onBlur: function() {
+            // prevent loosing focus
+            return false;
+        }
     });
-  });
-</script>    
+});
 
-  </body>
-</html>
+</script>
+</body>
