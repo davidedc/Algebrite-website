@@ -25,6 +25,12 @@ jQuery(document).ready(function($) {
             return;
         }
 
+        if (command == 'clearall') {
+            Algebrite.clearall();
+            term.clear();
+            return;
+        }
+
         try {
           var algebriteCommand;
 
@@ -48,8 +54,9 @@ jQuery(document).ready(function($) {
             // prevent loosing focus
             return false;
         },
-        onClear: function() {
-            Algebrite.clear();
+        clear: false,
+        completion: function(term, string, callback) {
+            // do nothing
         }
     });
 });
