@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="noindex" />
-<title>Algebrite v0.3.13 function reference</title>
+<title>Algebrite v0.3.13 (latest-stable) function reference</title>
 
 <style>
 #note {
@@ -17,7 +17,7 @@
       ##bdedc0 for latest-stable versions
     */
     background: #bdedc0;
-    opacity: 0.9;
+    opacity: 0.8;
     text-align: center;
     line-height: 1.5;
     overflow: hidden; 
@@ -41,7 +41,7 @@
 <center>
 
 <h1>Function Reference</h1>
-<small>Algebrite v.0.3.13 (latest-stable). Page revision: 2</small>
+<small>Algebrite v.0.3.13 (latest-stable) / Page revision: 3</small>
 
 <p>
 <table>
@@ -163,6 +163,7 @@ draw (unavailable)<br>
 <a href="#test">test</a><br>
 <a href="#transpose">transpose</a><br>
 <a href="#unit">unit</a><br>
+<a href="#version">version</a><br>
 <a href="#zero">zero</a><br>
 
 </tt></td></tr></table>
@@ -427,15 +428,15 @@ Example 2: Check the relation A = Q<sup>T</sup>DQ.
 <pre>
 <i>Enter</i>
 
-	A - dot(transpose(Q),D,Q)
+  A - dot(transpose(Q),D,Q)
 
 <i>Result</i>
  
-	6.27365e-12    -1.58236e-11   1.81902e-11
+  6.27365e-12    -1.58236e-11   1.81902e-11
  
-	-1.58236e-11   -1.95365e-11   2.56514e-12
+  -1.58236e-11   -1.95365e-11   2.56514e-12
  
-	1.81902e-11    2.56514e-12    1.32627e-11
+  1.81902e-11    2.56514e-12    1.32627e-11
 </pre>
 
 <p>
@@ -757,6 +758,10 @@ Returns an n by n identity matrix.
 <h1><a name="zero">zero(<i>i,j,...</i>) <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/150dfe8158c50d6abde9d2ec82d6ad7546182093/sources/abs.coffee">source</a></small></h1>--></h1>
 Returns a null tensor with dimensions i, j, etc.
 Useful for creating a tensor and then setting the component values.
+
+<p>
+<h1><a name="version">version <!-- <small><a href="https://github.com/davidedc/Algebrite/blob/150dfe8158c50d6abde9d2ec82d6ad7546182093/sources/abs.coffee">source</a></small></h1>--></h1>
+Prints out version.
 
 </body>
 </html>

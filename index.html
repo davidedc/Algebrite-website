@@ -21,9 +21,9 @@
   <body>
     <div class="wrapper">
       <header>
-        <img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
-        <h1>algebrite</h1>
-        <p>Computer Algebra System in Javascript. <a href="https://github.com/davidedc/Algebrite">view on GitHub</a>.</br> <small>latest-stable: v0.3.13</small></p>
+        <a href="index.html"><img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
+        <h1>algebrite</h1></a>
+        <p>Computer Algebra System in Javascript.</br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.</br>latest-stable: v0.3.13</small></p>
 
         <p class="view"><strong><a href="javascript:;" onclick="document.location.hash='Features';">Features</a></strong>
         </br><small><a href="javascript:;" onclick="document.location.hash='API and scripting';">Usage via API or custom scripting</a>
@@ -34,27 +34,20 @@
         </br><a href="javascript:;" onclick="document.location.hash='Substitution';">Substitution</a>
         </br><a href="javascript:;" onclick="document.location.hash='Symbolic and numeric roots';">Symbolic and numeric roots</a>
         </br><a href="javascript:;" onclick="document.location.hash='Units of measurement';">Units of measurement</a>
-        </br><a href="javascript:;" onclick="document.location.hash='Matrices';">Matrices</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Matrices, tensors';">Matrices, tensors</a>
         </br><a href="javascript:;" onclick="document.location.hash='Derivatives and gradients';">Derivatives and gradients</a>
-        </br><a href="javascript:;" onclick="document.location.hash='Tensors';">Tensors</a>
         </br><a href="javascript:;" onclick="document.location.hash='Integrals, multi-integrals';">Integrals, multi-integrals</a>
         </small>
         </p>
 
         <strong>
-        <p class="view"><a href="docs/index.html">Docs / release notes</a></p>
+        <p class="view"><a href="docs/latest-stable/index.html">Docs</a></p>
         <p class="view"><a href="./sandboxes/latest-stable/sandbox.html">Sandbox</a></p>
+        <p class="view"><a href="docs/index.html">Release notes</a></p>
         <p class="view"><a href="javascript:;" onclick="document.location.hash='References';">Credits/links</a></p>
         </strong>
 
 
-        <!--
-        <ul>
-          <li><a href="https://github.com/davidedc/Algebrite-website/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/davidedc/Algebrite-website/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/davidedc/Algebrite-website">View On <strong>GitHub</strong></a></li>
-        </ul>
-        -->
 
       </header>
       <section>
@@ -218,7 +211,7 @@ velocity/time</textarea>
     </br>
 
 <h3>
-<a id="Matrices" class="anchor" href="#Matrices" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Matrices</h3>
+<a id="Matrices, tensors" class="anchor" href="#Matrices, tensors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Matrices, tensors</h3>
 
     <div style="width:100%;">
     <textarea id="terminal6" name="terminal" rows="6" cols="80" style="width:100%;margin-bottom:-5px;">
@@ -233,6 +226,29 @@ inv(A)-adj(A)/det(A)</textarea>
     </div>
     </br>
 
+    ... tensors:
+    <div style="width:100%;">
+    <textarea id="terminal9" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;"># Define a tensor function
+F=(x+2y,3x+4y)
+# now the gradient
+d(F,(x,y))</textarea>
+    <textarea id="output9" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(9);" type="button">
+    </div>
+    </br>
+
+    tensors (unlike matrices) can have more than 2 dimensions:
+    <div style="width:100%;">
+    <textarea id="terminal13" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;"># Zero tensor with three dimensions
+zerotensor = zero(2,3,2)
+# get an element
+zerotensor[1,2,2]</textarea>
+    <textarea id="output13" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(13);" type="button">
+    </div>
+    </br>
+
+
 <h3>
 <a id="Derivatives and gradients" class="anchor" href="#Derivatives and gradients" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Derivatives and gradients</h3>
 
@@ -246,18 +262,6 @@ d(r,(x,y))</textarea>
     </div>
     </br>
 
-<h3>
-<a id="Tensors" class="anchor" href="#Tensors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tensors</h3>
-
-    <div style="width:100%;">
-    <textarea id="terminal9" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;"># Define a tensor function
-F=(x+2y,3x+4y)
-# now the gradient
-d(F,(x,y))</textarea>
-    <textarea id="output9" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
-    <input name="execute" value="&#x25B6;" onclick="execute(9);" type="button">
-    </div>
-    </br>
 
 <h3>
 <a id="Integrals, multi-integrals" class="anchor" href="#Integrals, multi-integrals" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integrals, multi-integrals</h3>
