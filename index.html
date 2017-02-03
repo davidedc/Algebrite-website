@@ -6,7 +6,10 @@
     <meta name="keywords" content="JavaScript,Computer algebra system,Symbolic computation,Algebraic computation">
     <meta name="author" content="Davide Della Casa">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
     <title>Algebrite</title>
+
+    <base href="./">
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
@@ -20,29 +23,28 @@
       <header>
         <img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
         <h1>algebrite</h1>
-        <p>Computer Algebra System in Javascript. <a href="https://github.com/davidedc/Algebrite">view on GitHub</a></p>
+        <p>Computer Algebra System in Javascript. <a href="https://github.com/davidedc/Algebrite">view on GitHub</a>.</br> <small>latest-stable: v0.3.13</small></p>
 
-        <p class="view"><strong><a href="#Features">Features</a></strong>
-        </br><small><a href="#API and scripting">Usage via API or custom scripting</a>
-        </br><a href="#Arbitrary-precision arithmetic">Arbitrary-precision arithmetic</a>
-        </br><a href="#Complex quantities">Complex quantities</a>
-        </br><a href="#Simplification">Simplification</a>
-        </br><a href="#Expansion">Expansion</a>
-        </br><a href="#Substitution">Substitution</a>
-        </br><a href="#Symbolic and numeric roots">Symbolic and numeric roots</a>
-        </br><a href="#Units of measurement">Units of measurement</a>
-        </br><a href="#Matrices">Matrices</a>
-        </br><a href="#Derivatives and gradients">Derivatives and gradients</a>
-        </br><a href="#Tensors">Tensors</a>
-        </br><a href="#Integrals, multi-integrals">Integrals, multi-integrals</a>
-        </br><a href="#Computing integrals">Computing integrals</a>
+        <p class="view"><strong><a href="javascript:;" onclick="document.location.hash='Features';">Features</a></strong>
+        </br><small><a href="javascript:;" onclick="document.location.hash='API and scripting';">Usage via API or custom scripting</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Arbitrary-precision arithmetic';">Arbitrary-precision arithmetic</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Complex quantities';">Complex quantities</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Simplification';">Simplification</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Expansion';">Expansion</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Substitution';">Substitution</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Symbolic and numeric roots';">Symbolic and numeric roots</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Units of measurement';">Units of measurement</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Matrices';">Matrices</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Derivatives and gradients';">Derivatives and gradients</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Tensors';">Tensors</a>
+        </br><a href="javascript:;" onclick="document.location.hash='Integrals, multi-integrals';">Integrals, multi-integrals</a>
         </small>
         </p>
 
         <strong>
-        <p class="view"><a href="./reference.html" target="_blank">Function reference</a></p>
-        <p class="view"><a href="./sandbox.html" target="_blank">Sandbox</a></p>
-        <p class="view"><a href="#References">Credits/links</a></p>
+        <p class="view"><a href="docs/index.html">Docs / release notes</a></p>
+        <p class="view"><a href="./sandboxes/latest-stable/sandbox.html">Sandbox</a></p>
+        <p class="view"><a href="javascript:;" onclick="document.location.hash='References';">Credits/links</a></p>
         </strong>
 
 
@@ -60,8 +62,7 @@
 <p>Algebrite is a simple, comprehensible and extensible Javascript library for symbolic computation.</p>
 
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why Algebrite</h3>
+<h2>Why Algebrite</h2>
 
 Algebrite is...
 <ul>
@@ -74,12 +75,12 @@ Algebrite is...
 <h2>
 <a id="Features" class="anchor" href="#Features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
 
-<p>...these are just some of the features. For an organic view please check the <a href="./reference.html" target="_blank">function reference</a>.</p>
+<p>...these are just some of the features. For an organic view please check the <a href="docs/latest-stable/reference.html">function reference</a>.</p>
 
     <h3>
     <a id="API and scripting" class="anchor" href="#API and scripting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage via API or custom scripting language</h3>
 
-    <p>Algebrite comes with its own scripting language, but all functions are also exposed as API for standard JS integration. See <a href="./reference.html" target="_blank">function reference</a> for API description.</p>
+    <p>Algebrite comes with its own scripting language, but all functions are also exposed as API for standard JS integration. See <a href="docs/latest-stable/reference.html">function reference</a> for API description.</p>
 
     <div style="width:49%; float:left; ">
     <textarea id="terminal120" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;"># internal scripting language
@@ -114,8 +115,7 @@ Algebrite.run('x + x');</textarea>
     </div>
     </br>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fractions</h3>
+<h3>Fractions</h3>
 
     <div style="width:100%;">
     <textarea id="terminal100" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;">
@@ -189,8 +189,8 @@ roots(a*x^2+b*x+c) # second degree</textarea>
     ... symbolic solutions of higher-degree polynomials or special polynomials:
     <div style="width:100%;">
     <textarea id="terminal162" name="terminal" rows="3" cols="80" style="width:100%;margin-bottom:-5px;">roots(x^4 + x^3 + x^2 + x + 1) # third and fourth degree are solved too
-roots(m*x^9 + n) # roots of special polinomials
-roots((x^4+x^3)*(x^4*x^2)) # roots of factorable polinomials</textarea>
+roots(m*x^9 + n) # roots of special polynomials
+roots((x^4+x^3)*(x^4*x^2)) # roots of factorable polynomials</textarea>
     <textarea id="output162" name="terminal" rows="6" cols="80" style="width:100%;"></textarea>
     <input name="execute" value="&#x25B6;" onclick="execute(162);" type="button"> <small>...give it a few seconds</small>
     </div>
@@ -270,9 +270,7 @@ integral(x*y,x,y)</textarea>
     </div>
     </br>
 
-<h3>
-<a id="Computing integrals" class="anchor" href="#Computing integrals" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Computing integrals</h3>
-
+    ... computing integrals:
     <div style="width:100%;">
     <textarea id="terminal11" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">defint(x^2,y,0,sqrt(1-x^2),x,-1,1)</textarea>
     <textarea id="output11" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
@@ -291,16 +289,16 @@ defint(f,t,0,2*pi)</textarea>
     </br>
 
 
-<h3>
-<a id="References" class="anchor" href="#References" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Credits and links</h3>
+<h2>
+<a id="References" class="anchor" href="#References" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Credits and links</h2>
 
-<p>Algebrite is an adaptation of <a href="http://eigenmath.sourceforge.net/Eigenmath.pdf">a delightful gem of CAS named EigenMath</a> by George Weigt. Most of <a href="http://eigenmath.sourceforge.net/Eigenmath.pdf">his manual</a> applies to Algebrite. See the <a href="./reference.html" target="_blank">function reference</a> (adapted from the one compiled by George Weigt for the EigenMath project) for a quick view.
+<p>Algebrite is an adaptation of <a href="https://www.google.co.uk/search?q=eigenmath+filetype:pdf">a delightful gem of CAS named EigenMath</a> by George Weigt. Most of his manual applies to Algebrite. See the <a href="docs/latest-stable/reference.html">function reference</a> (adapted from the one compiled by George Weigt for the EigenMath project) for a quick view.
 
 Also you might want to check another fork of EigenMath: <a href="http://smib.sourceforge.net/">SMIB by Philippe Billet</a>.</p>
 
 <p>Another CAS of similar nature is <a href="http://www.sympy.org/en/index.html">SymPy</a>, made in Python.</p>
 
-<p>Three other Javascript CAS are:
+<p>Other Javascript CAS are:
 
     <ul>
 
@@ -309,40 +307,33 @@ Also you might want to check another fork of EigenMath: <a href="http://smib.sou
 
         <li><a href="http://coffeequate.readthedocs.org/">Coffeequate by Matthew Alger</a> supporting "quadratic and linear equations, simplification of most algebraic expressions, uncertainties propagation, substitutions, variables, constants, and symbolic constants"</li>
 
-        <li><a href="http://algebra.js.org/">Algebra.js by Nicole White</a> which among other things can build and solve equations via a "chainable" API.</li>
+        <li><a href="http://algebra.js.org/">Algebra.js by Nicole White</a> which among other things can build and solve equations (up to cubic) via a "chainable" API.</li>
+
+        <li><a href="http://nerdamer.com/">Nerdamer by Martin Donk and others</a> which among other things solves symbolically polynomials up to 3rd degree, supports symbolic integration and differentiation, and handles complex numbers.</li>
+
+        <li><a href="https://github.com/socraticorg/mathsteps">Mathsteps by Evy Kassirer, Ahmed Elnaiem and others</a> focuses on providing "step-by-step solutions for a subset of high school algebra", including polyomials with basic fractions and radicals.</li>
+
+        <li><a href="https://github.com/infusion/Polynomial.js">Polynomial.js by Robert Eisele</a> specifically performs operations on polynomials in the fields: Q, C, Zp and R. (roots/factorisation routines not included).</li>
+
+        <li><a href="https://github.com/Khan/KAS">Kas by the Khan Academy's team</a> can simplify and compare expressions and equations.</li>
+
+        <li><a href="http://mathjs.org/docs/expressions/algebra.html">Math.js by Jos de Jong and others</a> can simplify expressions and figure out derivatives. Handles big numbers, complex numbers, units and matrices.</li>
 
     </ul>
 
 </p>
 
-<p>The sandbox is <a href="https://github.com/jcubic/jquery.terminal">jquery.terminal</a> by <a href="https://github.com/jcubic/">jcubic</a>. The "pentakis dodecahedron" logo is by <a href="https://thenounproject.com/koutchinski/">Felix Koutchinski</a>.</p>
+<p>The sandbox is <a href="https://github.com/jcubic/jquery.terminal">jquery.terminal</a> by <a href="https://github.com/jcubic/">Jakub Jankiewicz</a>. The "pentakis dodecahedron" logo is by <a href="https://thenounproject.com/koutchinski/">Felix Koutchinski</a>.</p>
 
 
-<!--
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/#mentioning-users-and-teams" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
--->
       </section>
 
-      <!--
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/davidedc">davidedc</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-      -->
     </div>
 
     <script src="javascripts/scale.fix.js"></script>
 
-<script src="javascripts/sandboxlibs/jquery.min.js"></script>
-<script src="dist/algebrite.bundle-for-browser.js"></script>
+<script src="javascripts/jquery.min.js"></script>
+<script src="dist/latest-stable/algebrite.bundle-for-browser.js"></script>
 
 
   <script type="text/javascript" language="javascript">

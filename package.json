@@ -2,7 +2,7 @@
   "name": "algebrite-for-website",
   "version": "0.2.12",
   "description": "Computer Algebra System in Coffeescript - for website",
-  "main": "dist/algebrite-bundle.js",
+  "main": "dist/latest-stable/algebrite-bundle.js",
   "keywords": [
     "cas",
     "algebra",
@@ -16,9 +16,9 @@
   "author": "Davide Della Casa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/antimatter15/Algebrite/issues"
+    "url": "https://github.com/davidedc/Algebrite/issues"
   },
-  "homepage": "https://github.com/antimatter15/Algebrite#readme",
+  "homepage": "https://github.com/davidedc/Algebrite#readme",
   "dependencies": {
     "algebrite": "*"
   }
