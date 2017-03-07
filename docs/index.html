@@ -23,7 +23,7 @@
       <header>
         <a href="index.html"><img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
         <h1>algebrite</h1></a>
-        <p>Computer Algebra System in Javascript.</br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.</br>latest-stable: v0.4.2</small></p>
+        <p>Computer Algebra System in Javascript.</br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.</br>latest-stable: v1.0.0</small></p>
 
         <p class="view">
         </br><small><b><a href="index.html">back to main page</a></b>
@@ -38,11 +38,9 @@
 <h2>
 Latest-stable version's docs</h2>
 
-<b>latest-stable (v0.4.2):</b><a href="docs/latest-stable/reference.html"> function reference</a> | <a href="sandboxes/latest-stable/sandbox.html"> sandbox</a>
+<b>latest-stable (v1.0.0):</b><a href="docs/latest-stable/reference.html"> function reference</a> | <a href="docs/latest-stable/why-tensor-notation-changes-in-v1.0.0.html"> why the tensor notation changes in v1.0.0?</a> | <a href="sandboxes/latest-stable/sandbox.html"> sandbox</a>
 </br>
-<b>Improved:</b> fixed all issues found in previous version. Unified "mag" into "abs" (just use abs all the times). sqrt(x^2) is now correct and returns abs(x). All doubles now show the decimal point when printed. abs, imag, arg, rect, legendre are now in general more correct than in the previous version.</br>
-<b>Other info:</b> Adding a flag “assumeRealVariables" for assuming/not assuming variables to be real. </br>
-<b>Known issues:</b> 4 integrals from previous version aren't solved anymore.</br>
+<b>Improved:</b> code generation + latex generation for matrices / can now pass functions as arguments / overhaul of the matrix notation (see dedicated document in links above) / some refactoring</br>
 
 </br>
 
@@ -50,6 +48,12 @@ Latest-stable version's docs</h2>
 
 <h2>
 All versions and release notes</h2>
+
+<b>v1.0.0:</b><a href="docs/1.0.0/reference.html"> function reference</a> | <a href="docs/1.0.0/why-tensor-notation-changes-in-v1.0.0.html"> why the tensor notation changes in v1.0.0?</a> | <a href="sandboxes/1.0.0/sandbox.html"> sandbox</a>
+</br>
+<b>Improved:</b> code generation + latex generation for matrices / can now pass functions as arguments / overhaul of the matrix notation (see dedicated document in links above) / some refactoring</br>
+
+</br>
 
 <b>v0.4.2:</b><a href="docs/0.4.2/reference.html"> function reference</a> | <a href="sandboxes/0.4.2/sandbox.html"> sandbox</a>
 </br>
@@ -81,7 +85,6 @@ One of the first releases.</br>
     <script src="javascripts/scale.fix.js"></script>
 
 <script src="javascripts/jquery.min.js"></script>
-<script src="dist/latest-stable/algebrite.bundle-for-browser.js"></script>
 
 
   </body>

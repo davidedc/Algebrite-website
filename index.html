@@ -23,7 +23,7 @@
       <header>
         <a href="index.html"><img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
         <h1>algebrite</h1></a>
-        <p>Computer Algebra System in Javascript.</br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.</br>latest-stable: v0.4.2</small></p>
+        <p>Computer Algebra System in Javascript.</br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.</br>latest-stable: v1.0.0</small></p>
 
         <p class="view"><strong><a href="javascript:;" onclick="document.location.hash='Features';">Features</a></strong>
         </br><small><a href="javascript:;" onclick="document.location.hash='API and scripting';">Usage via API or custom scripting</a>
@@ -216,7 +216,7 @@ velocity/time</textarea>
     <div style="width:100%;">
     <textarea id="terminal6" name="terminal" rows="6" cols="80" style="width:100%;margin-bottom:-5px;">
 # shows A^−1 = adj A/ det A. (see that the last result is a zero matrix)
-A=((a,b),(c,d))
+A=[[a,b],[c,d]]
 inv(A)
 adj(A)
 det(A)
@@ -229,9 +229,9 @@ inv(A)-adj(A)/det(A)</textarea>
     ... tensors:
     <div style="width:100%;">
     <textarea id="terminal9" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;"># Define a tensor function
-F=(x+2y,3x+4y)
+F=[x+2y,3x+4y]
 # now the gradient
-d(F,(x,y))</textarea>
+d(F,[x,y])</textarea>
     <textarea id="output9" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
     <input name="execute" value="&#x25B6;" onclick="execute(9);" type="button">
     </div>
@@ -256,7 +256,7 @@ zerotensor[1,2,2]</textarea>
     <textarea id="terminal8" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;">d(x^2)
 # gradients are derivatives on vectors
 r=sqrt(x^2+y^2)
-d(r,(x,y))</textarea>
+d(r,[x,y])</textarea>
     <textarea id="output8" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
     <input name="execute" value="&#x25B6;" onclick="execute(8);" type="button">
     </div>
