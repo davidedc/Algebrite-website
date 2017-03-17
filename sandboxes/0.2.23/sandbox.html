@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
           var result = eval.call(window, algebriteCommand);
         } catch(error) {
         }
-        term.echo(result);
+        term.echo(result, {exec: false});
 
     }, {
         greetings: "Algebrite v0.2.23 sandbox (both Algebrite scripting and Algebrite JS API modes)\n • end a line with ';' to indicate you are using JS API mode, otherwise input\n   will be interpreted as an Algebrite script.\n • hit shift-enter for multiple lines (works for Algebrite scripts better)\n\ntype 'help' for help.\n--------------------------------------------------------------------------------\n--                   THIS IS NOT THE LATEST VERSION                           --\n--------------------------------------------------------------------------------\n",
