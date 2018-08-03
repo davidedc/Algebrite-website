@@ -1,0 +1,163 @@
+
+.simple-console {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	font-family: sans-serif;
+}
+
+.simple-console-output {
+	overflow: auto;
+}
+
+.simple-console-output,
+.simple-console-input-wrapper {
+	flex: 0;
+	flex-basis: auto;
+}
+.simple-console-input-wrapper {
+	display: flex;
+	flex-shrink: 0;
+}
+.simple-console-input {
+	flex: 1;
+	font-size: inherit;
+	height: 1em;
+	color: inherit;
+	background: transparent;
+	border: 0;
+}
+.simple-console-input:focus {
+	outline: 0;
+}
+.simple-console-input-wrapper button {
+	margin-left: 0.2rem;
+	background: transparent;
+	color: inherit;
+	border: 0;
+	padding: 0;
+	font-size: 1em;
+	cursor: pointer;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+.simple-console-input-wrapper button svg {
+	width: 1em;
+	height: 1em;
+	pointer-events: none;
+}
+.simple-console-input-wrapper button {
+	outline: 0;
+}
+.simple-console-input-wrapper button:hover,
+.simple-console-input-wrapper button:focus {
+	color: #4078c0;
+}
+.dark .simple-console-input-wrapper button:hover,
+.dark .simple-console-input-wrapper button:focus {
+	color: #007CFF;
+}
+.simple-console-input-wrapper button:active {
+	opacity: 0.8;
+}
+.simple-console-input-wrapper {
+	position: absolute;
+	right: 0;
+	margin: 0.2em;
+    margin-top: 0.7em;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+	border-radius: 0.2em;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	cursor: default;
+}
+@media (max-width: 52em) {
+	.simple-console-input-wrapper {
+		min-width: 0;
+		left: 0;
+	}
+}
+.simple-console-input-wrapper,
+.entry {
+	padding: 0.25rem 0.5rem;
+	padding-left: 1rem; /* = A */
+	position: relative;
+}
+.input-chevron {
+	position: absolute;
+	left: 0;
+	top: 0.3rem;
+	bottom: 0;
+	width: 1rem; /* = A */
+	//display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.entry.input {
+	color: gray;
+	border-top: 1px dotted rgba(128, 128, 128, 0.5);
+}
+.error {
+	color: #A00;
+	background: #FFF5F5;
+}
+.dark .error {
+	color: #A00;
+	background: rgba(255, 0, 0, 0.15);
+}
+.warning {
+	color: #8a6300;
+	background: rgba(255, 230, 0, 0.24);
+}
+.dark .warning {
+	color: #ffdc46;
+	background: rgba(255, 171, 0, 0.2);
+}
+.info {
+	color: rgb(0, 89, 148);
+	background: rgba(0, 136, 255, 0.17);
+}
+.dark .info {
+	color: rgb(98, 155, 193);
+	background: rgba(0, 136, 255, 0.17);
+}
+.success {
+	color: rgb(77, 148, 0);
+	background: rgba(96, 226, 90, 0.17);
+}
+.dark .success {
+	color: rgb(138, 212, 58);
+	background: rgba(11, 255, 0, 0.17);
+}
+
+
+.light,
+.light {
+	background: white;
+	color: black;
+}
+.dark,
+.dark {
+	background: black;
+	color: white;
+}
+
+.dark ::-webkit-input-placeholder {
+	color: #555;
+}
+
+.dark :-moz-placeholder { /* Firefox 18- */
+	color: #555;
+}
+
+.dark ::-moz-placeholder { /* Firefox 19+ */
+	color: #555;
+}
+
+.dark :-ms-input-placeholder {
+	color: #555;
+}
