@@ -1,65 +1,76 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title>Algebrite v0.2.23 Sandbox</title>
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+
+    <title>Algebrite Sandbox</title>
     <meta name="author" content="Davide Della Casa"/>
     <meta name="Description" content="Algebrite sandbox"/>
     <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
-    <script src="./sandboxlibs/jquery-1.7.2.min.js"></script>
-    <script src="./sandboxlibs/jquery.mousewheel-min.js"></script>
-    <script src="./sandboxlibs/jquery.terminal.min.js"></script>
-    <script src="../../dist/0.2.23/algebrite.bundle-for-browser.js"></script>
-    <link href="./stylesheets/sandbox/jquery.terminal.css" rel="stylesheet"/>
-  </head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../stylesheets/simple-console.css">
+</head>
 <body>
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			display: flex;
+			flex: 1;
+		}
+		h1, p {
+			margin: 0.5rem 0;
+		}
+		h1 {
+			font-family: sans-serif;
+			font-weight: normal;
+		}
+		a {
+			color: #4078c0;
+		}
+		a:not(:hover) {
+			text-decoration: none;
+		}
+		code {
+			font-family: inherit;
+			padding: 0.1em 0.2em;
+			border: 1px solid rgba(128, 128, 128, 0.5);
+			border-radius: 0.1em;
+		}
+	</style>
 
-<script>
-jQuery(document).ready(function($) {
-    var id = 1;
-    $('body').terminal(function(command, term) {
+	<script src="../../whats-the-latest-version.js"></script>
+	<script type='text/javascript'>
+		var algebriteVersionToBeLoaded = "0.2.23";
+	</script>
 
-        if (command == 'help') {
-            term.echo('\nExamples:\n  a+a # a comment in scripting mode\n  100!\n  integral(x^2)\n  Algebrite.expand("(x+1)^4"); // js API mode\n');
-            term.echo('Hints:\n  if you use the js API a lot, you might be better off just using the js console of your browser\n');
-            return;
-        }
+	<script src="../libs/autosize.min.js"></script>
+	<script src="../libs/simple-console.js"></script>
+	<script src="../libs/commandsDispatcher.js"></script>
+	<script>
+		autosize(document.getElementById("inputTextarea"));
+	</script>
 
-        if (command == 'clearall') {
-            Algebrite.clearall();
-            term.clear();
-            return;
-        }
+	<script type='text/javascript'>
 
-        try {
-          var algebriteCommand;
+	window.whenCorrectAlgebriteVersionIsLoaded = function() {
+		var documentTitle = "Algebrite v";
+	    documentTitle += algebriteVersionToBeLoaded;
+	    if (Algebrite.version === latestStableAlgebriteVersion){
+	    	documentTitle += " (latest-stable)";
+	    }
+	    documentTitle += " Sandbox"
+	    document.title =  documentTitle
+	};
 
+	window.onload = function() {
+	  var s = document.createElement( 'script' );
+	  s.setAttribute( 'src', "../../dist/" + algebriteVersionToBeLoaded + "/algebrite.bundle-for-browser.js" );
+	  s.onload=whenCorrectAlgebriteVersionIsLoaded;
+	  document.body.appendChild( s );
+	}
 
-              if (/Algebrite\.[a-z]/.test(command) || /;[ \t]*$/.test(command)) {
-            algebriteCommand = command;
-              } else {
-            algebriteCommand = "Algebrite.run('" + command + "');";
-            algebriteCommand = algebriteCommand.replace("\n","');Algebrite.run('");
-              }
+	</script>
 
-
-          var result = eval.call(window, algebriteCommand);
-        } catch(error) {
-        }
-        term.echo(result, {exec: false});
-
-    }, {
-        greetings: "Algebrite v0.2.23 sandbox (both Algebrite scripting and Algebrite JS API modes)\n • end a line with ';' to indicate you are using JS API mode, otherwise input\n   will be interpreted as an Algebrite script.\n • hit shift-enter for multiple lines (works for Algebrite scripts better)\n\ntype 'help' for help.\n--------------------------------------------------------------------------------\n--                   THIS IS NOT THE LATEST VERSION                           --\n--------------------------------------------------------------------------------\n",
-        onBlur: function() {
-            // prevent loosing focus
-            return false;
-        },
-        clear: false,
-        completion: function(term, string, callback) {
-            // do nothing
-        }
-    });
-});
-
-</script>
 </body>

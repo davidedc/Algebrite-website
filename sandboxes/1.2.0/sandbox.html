@@ -2,13 +2,13 @@
 <head>
 	<meta charset="utf-8">
 
-    <title>Algebrite v1.2.0 (latest-stable) Sandbox</title>
+    <title>Algebrite Sandbox</title>
     <meta name="author" content="Davide Della Casa"/>
     <meta name="Description" content="Algebrite sandbox"/>
     <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="stylesheets/simple-console.css">
+	<link rel="stylesheet" href="../stylesheets/simple-console.css">
 </head>
 <body>
 	<style>
@@ -39,12 +39,38 @@
 			border-radius: 0.1em;
 		}
 	</style>
-	<script src="libs/autosize.min.js"></script>
-	<script src="libs/simple-console.js"></script>
-	<script src="libs/commandsDispatcher.js"></script>
+
+	<script src="../../whats-the-latest-version.js"></script>
+	<script type='text/javascript'>
+		var algebriteVersionToBeLoaded = "1.2.0";
+	</script>
+
+	<script src="../libs/autosize.min.js"></script>
+	<script src="../libs/simple-console.js"></script>
+	<script src="../libs/commandsDispatcher.js"></script>
 	<script>
 		autosize(document.getElementById("inputTextarea"));
 	</script>
-    <script src="../../dist/1.2.0/algebrite.bundle-for-browser.js"></script>
+
+	<script type='text/javascript'>
+
+	window.whenCorrectAlgebriteVersionIsLoaded = function() {
+		var documentTitle = "Algebrite v";
+	    documentTitle += algebriteVersionToBeLoaded;
+	    if (Algebrite.version === latestStableAlgebriteVersion){
+	    	documentTitle += " (latest-stable)";
+	    }
+	    documentTitle += " Sandbox"
+	    document.title =  documentTitle
+	};
+
+	window.onload = function() {
+	  var s = document.createElement( 'script' );
+	  s.setAttribute( 'src', "../../dist/" + algebriteVersionToBeLoaded + "/algebrite.bundle-for-browser.js" );
+	  s.onload=whenCorrectAlgebriteVersionIsLoaded;
+	  document.body.appendChild( s );
+	}
+
+	</script>
 
 </body>

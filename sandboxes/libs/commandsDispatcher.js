@@ -6,18 +6,21 @@ var con = new SimpleConsole({
 });
 document.body.appendChild(con.element);
 
-con.logHTML(
+var welcomeMessage = "Algebrite v";
+welcomeMessage += algebriteVersionToBeLoaded;
+if (algebriteVersionToBeLoaded === latestStableAlgebriteVersion){
+  welcomeMessage += " (latest-stable)";
+}
+welcomeMessage += " sandbox (both Algebrite scripting and Algebrite JS API modes)<br/>";
+welcomeMessage += "&nbsp;• end a line with ';' to indicate you are using JS API mode, otherwise input<br/>";
+welcomeMessage += "&nbsp;&nbsp;&nbsp;&nbsp;will be interpreted as an Algebrite script.<br/>";
+welcomeMessage += "&nbsp;• hit shift-enter for multiple lines (works for Algebrite scripts better)<br/>";
+welcomeMessage += "<br/>";
+welcomeMessage += "type 'help' for help.<br/>";
+welcomeMessage += "--------------------------------------------------------------------------------<br/>";
+// welcomeMessage += --------------------------------------------------------------------------------<br/>--                   THIS IS NOT THE LATEST VERSION                           --<br/>--------------------------------------------------------------------------------<br/>",
 
-	"Algebrite v1.2.0 (latest-stable) sandbox (both Algebrite scripting and Algebrite JS API modes)<br/>" +
-	 "&nbsp;• end a line with ';' to indicate you are using JS API mode, otherwise input<br/>" +
-	 "&nbsp;&nbsp;&nbsp;&nbsp;will be interpreted as an Algebrite script.<br/>" +
-	 "&nbsp;• hit shift-enter for multiple lines (works for Algebrite scripts better)<br/>" +
-	"<br/>" +
-	"type 'help' for help.<br/>" +
-	"--------------------------------------------------------------------------------<br/>"
-  // --------------------------------------------------------------------------------<br/>--                   THIS IS NOT THE LATEST VERSION                           --<br/>--------------------------------------------------------------------------------<br/>",
-
-);
+con.logHTML(welcomeMessage);
 
 function handle_command(command){
 
