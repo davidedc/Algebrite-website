@@ -42,7 +42,8 @@
 
 	<script src="../../whats-the-latest-version.js"></script>
 	<script type='text/javascript'>
-		var algebriteVersionToBeLoaded = "0.4.2";
+		// get the algebrite version to be loaded directly from the URL
+		var algebriteVersionToBeLoaded = window.location.pathname.replace(/.*sandboxes\//,"").replace(/\/.*/,"");
 	</script>
 
 	<script src="../libs/autosize.min.js"></script>
