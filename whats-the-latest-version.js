@@ -1,1 +1,1 @@
-latestStableAlgebriteVersion = "1.2.0";
+latestStableAlgebriteVersion = "1.4.0";
