@@ -1,4 +1,1 @@
-#to build#
-* install npm
-* ```npm install```
-* ```browserify ./dist/mainForWebPage.js -o ./dist/algebrite.bundle.js```
+The Algebrite website http://algebrite.org , with docs and sandboxes. Also see https://github.com/davidedc/Algebrite .
