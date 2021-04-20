@@ -2,7 +2,13 @@ var latestStableAlgebriteVersion = "1.4.0";
 
 var versionsData = {
     "1.4.0": {
-        "changes": "asasas",
+        "changes":
+
+"Added sqrt(3)/3, -sqrt(3)/2 to arcsin, arccos. " +
+"Fixed #106 'Missing minuses when printing numbers in terms (when printing non-normalised terms)'. " +
+"More functions now using JS booleans rather than the C-style integers '0' and '1'. " +
+"Fixed #121 '1 - 1/2*0^2 results in divide by zero error'. Refactoring.",
+
         "improved": "asasas",
         "other info": "asasas",
         "known issues": "asasas",
@@ -110,3 +116,7 @@ var versionsData = {
         }
     }
 };
+
+var theVersions = Object.keys(versionsData);
+// sorting semver routine from https://stackoverflow.com/a/40201629
+var sortedVersions = theVersions.map( a => a.split('.').map( n => +n+100000 ).join('.') ).sort().map( a => a.split('.').map( n => +n-100000 ).join('.') );
