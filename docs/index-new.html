@@ -23,6 +23,24 @@
   <script src="versions-data.js"></script>
   <script src="versions-data-utils.js"></script>
 
+  <script>
+
+  function addLatestStable () {
+
+    const latestStableInfoDiv = document.getElementById("latest-stable-info");
+    latestStableInfoDiv.innerHTML += `
+<b>latest-stable (v${latestStableAlgebriteVersion}):</b><a href="docs/latest-stable/reference.html"> function reference</a> | <a href="sandboxes/latest-stable/sandbox.html"> sandbox</a>
+</br>
+<b>Changes:</b> TODO</br>
+
+</br>
+`;
+  }
+
+  document.body.onload = addLatestStable;
+
+  </script>
+
     <div class="wrapper">
       <header>
         <a href="index.html"><img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
@@ -42,13 +60,12 @@
 <h2>
 Latest-stable version docs</h2>
 
-<b>latest-stable (v1.4.0):</b><a href="docs/latest-stable/reference.html"> function reference</a> | <a href="sandboxes/latest-stable/sandbox.html"> sandbox</a>
-</br>
-<b>Changes:</b> TODO</br>
-
-</br>
+    <div id="latest-stable-info">
+    </div>
 
 <hr>
+
+
 
 <h2>
 All versions and release notes</h2>
