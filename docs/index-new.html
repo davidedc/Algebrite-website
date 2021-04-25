@@ -35,6 +35,27 @@
 
 </br>
 `;
+
+
+var i, eachVersion;
+
+    const allVersionsInfoDiv = document.getElementById("all-versions-info");
+
+for (i = 0, len = sortedVersionsFromNewToOld.length; i < len; i++) {
+  eachVersion = sortedVersionsFromNewToOld[i];
+
+    allVersionsInfoDiv.innerHTML += `
+
+<b>v${eachVersion}:</b><a href="docs/${eachVersion}/reference.html"> function reference</a> | <a href="sandboxes/${eachVersion}/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.3.1...v${eachVersion}"> commits</a>
+</br>
+<b>Changes:</b> ${versionsData[eachVersion].changes}</br>
+
+</br>
+`;
+
+}
+
+
   }
 
   document.body.onload = addLatestStable;
@@ -69,6 +90,14 @@ Latest-stable version docs</h2>
 
 <h2>
 All versions and release notes</h2>
+
+    <div id="all-versions-info">
+    </div>
+
+<hr>
+
+<h2>
+Old way to generate versions info:</h2>
 
 <b>v1.4.0:</b><a href="docs/1.4.0/reference.html"> function reference</a> | <a href="sandboxes/1.4.0/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.3.1...v1.4.0"> commits</a>
 </br>
