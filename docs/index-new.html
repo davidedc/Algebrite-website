@@ -25,40 +25,36 @@
 
   <script>
 
-  function addLatestStable () {
+  function buildVersionsBlurbs () {
 
     const latestStableInfoDiv = document.getElementById("latest-stable-info");
-    latestStableInfoDiv.innerHTML += `
-<b>latest-stable (v${latestStableAlgebriteVersion}):</b><a href="docs/latest-stable/reference.html"> function reference</a> | <a href="sandboxes/latest-stable/sandbox.html"> sandbox</a>
-</br>
-<b>Changes:</b> TODO</br>
-
-</br>
-`;
+    latestStableInfoDiv.innerHTML += versionBlurb(latestStableAlgebriteVersion);
 
 
-var i, eachVersion;
+    var i, eachVersion;
 
     const allVersionsInfoDiv = document.getElementById("all-versions-info");
 
-for (i = 0, len = sortedVersionsFromNewToOld.length; i < len; i++) {
-  eachVersion = sortedVersionsFromNewToOld[i];
+    for (i = 0, len = sortedVersionsFromNewToOld.length; i < len; i++) {
+      eachVersion = sortedVersionsFromNewToOld[i];
+      allVersionsInfoDiv.innerHTML += versionBlurb(eachVersion);
+    }
+  }
 
-    allVersionsInfoDiv.innerHTML += `
+  function versionBlurb(theVersionString) {
+    return `
 
-<b>v${eachVersion}:</b><a href="docs/${eachVersion}/reference.html"> function reference</a> | <a href="sandboxes/${eachVersion}/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.3.1...v${eachVersion}"> commits</a>
+<b>v${theVersionString}:</b><a href="docs/${theVersionString}/reference.html"> function reference</a> | <a href="sandboxes/${theVersionString}/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.3.1...v${theVersionString}"> commits</a>
 </br>
-<b>Changes:</b> ${versionsData[eachVersion].changes}</br>
+<b>Changes:</b> ${versionsData[theVersionString].changes}</br>
 
 </br>
 `;
 
-}
-
-
   }
 
-  document.body.onload = addLatestStable;
+
+  document.body.onload = buildVersionsBlurbs;
 
   </script>
 
