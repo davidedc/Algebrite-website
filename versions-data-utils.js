@@ -4,3 +4,6 @@ var sortedVersionsFromOldToNew = theVersions.map( a => a.split('.').map( n => +n
 var sortedVersionsFromNewToOld = sortedVersionsFromOldToNew.slice().reverse();
 
 var latestStableAlgebriteVersion = sortedVersionsFromNewToOld[0];
+var nextVersionOlderThan = function(whichVersion){
+	return sortedVersionsFromNewToOld[sortedVersionsFromNewToOld.indexOf(whichVersion)+1]
+}
