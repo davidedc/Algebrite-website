@@ -10,7 +10,8 @@ var versionsData = {
         "improved": null,
         "other info": null,
         "known issues": null,
-        "other links": null
+        "other links": null,
+        "addCommitsLink": true
     },
     "1.3.1": {
         "changes":
@@ -20,7 +21,8 @@ var versionsData = {
         "improved": null,
         "other info": null,
         "known issues": null,
-        "other links": null
+        "other links": null,
+        "addCommitsLink": true
     },
     "1.3.0": {
         "changes":
@@ -35,7 +37,8 @@ var versionsData = {
         "improved": null,
         "other info": null,
         "known issues": null,
-        "other links": null
+        "other links": null,
+        "addCommitsLink": true
     },
     "1.2.1": {
         "changes":
@@ -46,7 +49,8 @@ var versionsData = {
         "improved": null,
         "other info": null,
         "known issues": null,
-        "other links": null
+        "other links": null,
+        "addCommitsLink": true
     },
     "1.2.0": {
         "changes":
@@ -59,7 +63,8 @@ var versionsData = {
         "improved": null,
         "other info": null,
         "known issues": null,
-        "other links": null
+        "other links": null,
+        "addCommitsLink": true
     },
     "1.0.0": {
         "changes":
@@ -70,7 +75,8 @@ var versionsData = {
         "improved": null,
         "other info": null,
         "known issues": null,
-        "other links": null
+        "other links": null,
+        "addCommitsLink": false
     },
     "0.4.2": {
         "changes": null,
@@ -82,7 +88,8 @@ var versionsData = {
 
         "other info": "Adding a flag 'assumeRealVariables' for assuming/not assuming variables to be real.",
         "known issues": "4 integrals from previous version aren't solved anymore.",
-        "other links": null
+        "other links": null,
+        "addCommitsLink": false
     },
     "0.3.13": {
         "changes": null,
@@ -97,13 +104,15 @@ var versionsData = {
 "simplifications for: sqrt(x*y) , sqrt(1/x) , sqrt(x^y). Latex printing: wrong formatting of exponents " +
 "that are more than one character long.",
 
-        "other links": null
+        "other links": null,
+        "addCommitsLink": false
     },
     "0.2.23": {
         "changes": "One of the first releases.",
         "improved": null,
         "other info": null,
         "known issues": null,
-        "other links": null
+        "other links": null,
+        "addCommitsLink": false
     }
 };
