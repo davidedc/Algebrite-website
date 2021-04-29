@@ -35,7 +35,7 @@
 
     const allVersionsInfoDiv = document.getElementById("all-versions-info");
 
-    for (i = 0, len = sortedVersionsFromNewToOld.length; i < len; i++) {
+    for (i = 1, len = sortedVersionsFromNewToOld.length; i < len; i++) {
       eachVersion = sortedVersionsFromNewToOld[i];
       allVersionsInfoDiv.innerHTML += versionBlurb(eachVersion);
     }
@@ -50,11 +50,17 @@ if (versionsData[theVersionString].addCommitsLink) {
   blurb += ` | <a href="https://github.com/davidedc/Algebrite/compare/v${nextVersionOlderThan(theVersionString)}...v${theVersionString}"> commits</a>`;
 }
 
-blurb += `</br>
-<b>Changes:</b> ${versionsData[theVersionString].changes}</br>
+blurb += "</br>";
 
-</br>
+if (versionsData[theVersionString].changes) {
+  blurb += `<b>Changes:</b> ${versionsData[theVersionString].changes}</br>
 `;
+}
+
+`;
+blurb += "</br>";
+
+
 
   return blurb;
   }
@@ -81,7 +87,7 @@ blurb += `</br>
 
 
 <h2>
-Latest-stable version docs</h2>
+Latest stable</h2>
 
     <div id="latest-stable-info">
     </div>
@@ -91,7 +97,7 @@ Latest-stable version docs</h2>
 
 
 <h2>
-All versions and release notes</h2>
+Previous versions</h2>
 
     <div id="all-versions-info">
     </div>
