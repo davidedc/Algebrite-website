@@ -7,9 +7,8 @@ var versionsData = {
 "More functions now using JS booleans rather than the C-style integers '0' and '1'. " +
 "Fixed #121 '1 - 1/2*0^2 results in divide by zero error'. Refactoring.",
 
-        "improved": null,
-        "other info": null,
-        "known issues": null,
+        "otherInfo": null,
+        "knownIssues": null,
         "other links": null,
         "addCommitsLink": true
     },
@@ -18,9 +17,8 @@ var versionsData = {
 
 "Fixing some problems with zero matrices.",
 
-        "improved": null,
-        "other info": null,
-        "known issues": null,
+        "otherInfo": null,
+        "knownIssues": null,
         "other links": null,
         "addCommitsLink": true
     },
@@ -34,9 +32,8 @@ var versionsData = {
 "refactoring gcd and adding gcd of polys (via factoring though). Can now detect and simplify many " +
 "rational expressions. Closes #89.",
 
-        "improved": null,
-        "other info": null,
-        "known issues": null,
+        "otherInfo": null,
+        "knownIssues": null,
         "other links": null,
         "addCommitsLink": true
     },
@@ -46,9 +43,8 @@ var versionsData = {
 "changing tabs into spaces so it works with CoffeeScript 2. Where native BigInt is implemented, " +
 "use a dedicated isSmall implementation - closes #78.",
 
-        "improved": null,
-        "other info": null,
-        "known issues": null,
+        "otherInfo": null,
+        "knownIssues": null,
         "other links": null,
         "addCommitsLink": true
     },
@@ -60,9 +56,8 @@ var versionsData = {
 "when something other than a function is used in function invocation / 'printfull' -> 'printcomputer' " +
 " / 'printplain' -> 'printhuman'",
 
-        "improved": null,
-        "other info": null,
-        "known issues": null,
+        "otherInfo": null,
+        "knownIssues": null,
         "other links": null,
         "addCommitsLink": true
     },
@@ -72,33 +67,30 @@ var versionsData = {
 "code generation + latex generation for matrices / can now pass functions as arguments / overhaul " +
 "of the matrix notation (see dedicated document in links above) / some refactoring",
 
-        "improved": null,
-        "other info": null,
-        "known issues": null,
+        "otherInfo": null,
+        "knownIssues": null,
         "other links": null,
         "addCommitsLink": false
     },
     "0.4.2": {
-        "changes": null,
-        "improved":
+        "changes":
 
 "fixed all issues found in previous version. Unified 'mag' into 'abs' (just use abs all the times). " +
 "sqrt(x^2) is now correct and returns abs(x). All doubles now show the decimal point when printed. " +
 "abs, imag, arg, rect, legendre are now in general more correct than in the previous version.",
 
-        "other info": "Adding a flag 'assumeRealVariables' for assuming/not assuming variables to be real.",
-        "known issues": "4 integrals from previous version aren't solved anymore.",
+        "otherInfo": "Adding a flag 'assumeRealVariables' for assuming/not assuming variables to be real.",
+        "knownIssues": "4 integrals from previous version aren't solved anymore.",
         "other links": null,
         "addCommitsLink": false
     },
     "0.3.13": {
-        "changes": null,
-        "improved":
+        "changes":
 
 "added 'version', 'clear', 'clearall', refactored 'print' and added all the new print* functions. ",
 
-        "other info": "Adding a flag 'assumeRealVariables' for assuming/not assuming variables to be real.",
-        "known issues":
+        "otherInfo": "Adding a flag 'assumeRealVariables' for assuming/not assuming variables to be real.",
+        "knownIssues":
 
 "'float(sin(2))' gives zero. 'sqrt(x^2)' gives x instead of abs(x). Incorrect " +
 "simplifications for: sqrt(x*y) , sqrt(1/x) , sqrt(x^y). Latex printing: wrong formatting of exponents " +
@@ -109,9 +101,8 @@ var versionsData = {
     },
     "0.2.23": {
         "changes": "One of the first releases.",
-        "improved": null,
-        "other info": null,
-        "known issues": null,
+        "otherInfo": null,
+        "knownIssues": null,
         "other links": null,
         "addCommitsLink": false
     }

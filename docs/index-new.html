@@ -57,7 +57,16 @@ if (versionsData[theVersionString].changes) {
 `;
 }
 
+if (versionsData[theVersionString].otherInfo) {
+  blurb += `<b>Other Info:</b> ${versionsData[theVersionString].otherInfo}</br>
 `;
+}
+
+if (versionsData[theVersionString].knownIssues) {
+  blurb += `<b>Known issues:</b> ${versionsData[theVersionString].knownIssues}</br>
+`;
+}
+
 blurb += "</br>";
 
 
