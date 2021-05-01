@@ -25,6 +25,17 @@
 
   <script>
 
+  function buildVersionsBlurbsAndSpecifyLatestVersionWhereNeeded () {
+    buildVersionsBlurbs();
+    specifyLatestVersionWhereNeeded();
+  }
+
+  function specifyLatestVersionWhereNeeded () {
+    const latestStableInSidePaneDiv = document.getElementById("latestVersionInSidePane");
+    latestStableInSidePaneDiv.innerHTML += "v"+latestStableAlgebriteVersion;
+  }
+
+
   function buildVersionsBlurbs () {
 
     const latestStableInfoDiv = document.getElementById("latest-stable-info");
@@ -39,6 +50,7 @@
       eachVersion = sortedVersionsFromNewToOld[i];
       allVersionsInfoDiv.innerHTML += versionBlurb(eachVersion);
     }
+
   }
 
   function versionBlurb(theVersionString) {
@@ -75,7 +87,7 @@ blurb += "</br>";
   }
 
 
-  document.body.onload = buildVersionsBlurbs;
+  document.body.onload = buildVersionsBlurbsAndSpecifyLatestVersionWhereNeeded;
 
   </script>
 
@@ -83,7 +95,7 @@ blurb += "</br>";
       <header>
         <a href="index.html"><img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
         <h1>algebrite</h1></a>
-        <p>Computer Algebra System in Javascript.</br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.</br>latest-stable: v1.4.0</small></p>
+        <p>Computer Algebra System in Javascript.</br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.</br>latest-stable: <span id="latestVersionInSidePane"></span></small></p>
 
         <p class="view">
         </br><small><b><a href="index.html">back to main page</a></b>
