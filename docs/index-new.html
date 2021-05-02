@@ -133,69 +133,6 @@ Previous versions</h2>
     <div id="all-versions-info">
     </div>
 
-<hr>
-
-<h2>
-Old way to generate versions info:</h2>
-
-<b>v1.4.0:</b><a href="docs/1.4.0/reference.html"> function reference</a> | <a href="sandboxes/1.4.0/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.3.1...v1.4.0"> commits</a>
-</br>
-<b>Changes:</b> Added sqrt(3)/3, -sqrt(3)/2 to arcsin, arccos. Fixed #106 "Missing minuses when printing numbers in terms (when printing non-normalised terms)". More functions now using JS booleans rather than the C-style integers "0" and "1". Fixed #121 "1 - 1/2*0^2 results in divide by zero error". Refactoring.</br>
-
-</br>
-
-<b>v1.3.1:</b><a href="docs/1.3.1/reference.html"> function reference</a> | <a href="sandboxes/1.3.1/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.3.0...v1.3.1"> commits</a>
-</br>
-<b>Changes:</b> Fixing some problems with zero matrices.</br>
-
-</br>
-
-<b>v1.3.0:</b><a href="docs/1.3.0/reference.html"> function reference</a> | <a href="sandboxes/1.3.0/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.2.1...v1.3.0"> commits</a>
-</br>
-<b>Changes:</b> Implemented hashing to speed up the integral table. Changes to erf/erfc so they handle symbolic and numeric evaluation at one/zero better. Better printouts (and options to printout) doubles: we can now set forceFixedPrintout (defaults to true) and maxFixedPrintoutDigits (defaults to 6) - closes #85. Refactoring how polys detection works (can now detect polys in factored form), refactoring gcd and adding gcd of polys (via factoring though). Can now detect and simplify many rational expressions. Closes #89.</br>
-
-</br>
-
-<b>v1.2.1:</b><a href="docs/1.2.1/reference.html"> function reference</a> | <a href="sandboxes/1.2.1/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.2.0...v1.2.1"> commits</a>
-</br>
-<b>Changes:</b> changing tabs into spaces so it works with CoffeeScript 2. Where native BigInt is implemented, use a dedicated isSmall implementation - closes #78.</br>
-
-</br>
-
-<b>v1.2.0:</b><a href="docs/1.2.0/reference.html"> function reference</a> | <a href="sandboxes/1.2.0/sandbox.html"> sandbox</a> | <a href="https://github.com/davidedc/Algebrite/compare/v1.0.0...v1.2.0"> commits</a>
-</br>
-<b>Changes:</b> results are now printed in "computer" notation by default / several bug fixes / "for", "sum", "product" arguments and their order have changed (as per new reference docs) / error returned when something other than a function is used in function invocation / "printfull" -> "printcomputer" / "printplain" -> "printhuman"</br>
-
-</br>
-
-<b>v1.0.0:</b><a href="docs/1.0.0/reference.html"> function reference</a> | <a href="docs/1.0.0/why-tensor-notation-changes-in-v1.0.0.html"> why the tensor notation changes in v1.0.0?</a> | <a href="sandboxes/1.0.0/sandbox.html"> sandbox</a>
-</br>
-<b>Improved:</b> code generation + latex generation for matrices / can now pass functions as arguments / overhaul of the matrix notation (see dedicated document in links above) / some refactoring</br>
-
-</br>
-
-<b>v0.4.2:</b><a href="docs/0.4.2/reference.html"> function reference</a> | <a href="sandboxes/0.4.2/sandbox.html"> sandbox</a>
-</br>
-<b>Improved:</b> fixed all issues found in previous version. Unified "mag" into "abs" (just use abs all the times). sqrt(x^2) is now correct and returns abs(x). All doubles now show the decimal point when printed. abs, imag, arg, rect, legendre are now in general more correct than in the previous version.</br>
-<b>Other info:</b> Adding a flag “assumeRealVariables" for assuming/not assuming variables to be real. </br>
-<b>Known issues:</b> 4 integrals from previous version aren't solved anymore.</br>
-
-</br>
-
-<b>v0.3.13:</b><a href="docs/0.3.13/reference.html"> function reference</a> | <a href="sandboxes/0.3.13/sandbox.html"> sandbox</a>
-</br>
-<b>Main discovered issues:</b> "float(sin(2))" gives zero. "sqrt(x^2)" gives x instead of abs(x). Incorrect simplifications for: sqrt(x*y) , sqrt(1/x) , sqrt(x^y).  Latex printing: wrong formatting of exponents that are more than one character long.</br>
-<b>Improved:</b> added "version", "clear", "clearall", refactored "print" and added all the new print* functions.</br>
-
-</br>
-
-<b>v0.2.23:</b><a href="docs/0.2.23/reference.html"> function reference</a> | <a href="sandboxes/0.2.23/sandbox.html"> sandbox</a>
-</br>
-One of the first releases.</br>
-
-</br>
-
-
 
       </section>
 
