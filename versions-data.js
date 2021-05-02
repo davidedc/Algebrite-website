@@ -9,7 +9,7 @@ var versionsData = {
 
         "otherInfo": null,
         "knownIssues": null,
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": true
     },
     "1.3.1": {
@@ -19,7 +19,7 @@ var versionsData = {
 
         "otherInfo": null,
         "knownIssues": null,
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": true
     },
     "1.3.0": {
@@ -34,7 +34,7 @@ var versionsData = {
 
         "otherInfo": null,
         "knownIssues": null,
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": true
     },
     "1.2.1": {
@@ -45,7 +45,7 @@ var versionsData = {
 
         "otherInfo": null,
         "knownIssues": null,
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": true
     },
     "1.2.0": {
@@ -58,7 +58,7 @@ var versionsData = {
 
         "otherInfo": null,
         "knownIssues": null,
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": true
     },
     "1.0.0": {
@@ -69,7 +69,12 @@ var versionsData = {
 
         "otherInfo": null,
         "knownIssues": null,
-        "other links": null,
+        "otherLinks": [
+            {
+                "text": "why the tensor notation changes in v1.0.0?",
+                "link": "why-tensor-notation-changes-in-v1.0.0.html"
+            }
+        ],
         "addCommitsLink": false
     },
     "0.4.2": {
@@ -81,7 +86,7 @@ var versionsData = {
 
         "otherInfo": "Adding a flag 'assumeRealVariables' for assuming/not assuming variables to be real.",
         "knownIssues": "4 integrals from previous version aren't solved anymore.",
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": false
     },
     "0.3.13": {
@@ -96,14 +101,14 @@ var versionsData = {
 "simplifications for: sqrt(x*y) , sqrt(1/x) , sqrt(x^y). Latex printing: wrong formatting of exponents " +
 "that are more than one character long.",
 
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": false
     },
     "0.2.23": {
         "changes": "One of the first releases.",
         "otherInfo": null,
         "knownIssues": null,
-        "other links": null,
+        "otherLinks": null,
         "addCommitsLink": false
     }
 };

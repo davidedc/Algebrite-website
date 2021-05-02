@@ -54,9 +54,19 @@
   }
 
   function versionBlurb(theVersionString) {
+    var i, eachLink, len;
     var blurb = `
 
-<b>v${theVersionString}:</b><a href="docs/${theVersionString}/reference.html"> function reference</a> | <a href="sandboxes/${theVersionString}/sandbox.html"> sandbox</a>`;
+<b>v${theVersionString}:</b><a href="docs/${theVersionString}/reference.html"> function reference</a> `;
+
+if (versionsData[theVersionString].otherLinks) {
+  for (i = 0, len = versionsData[theVersionString].otherLinks.length; i < len; i++) {
+    eachLink = versionsData[theVersionString].otherLinks[i];
+    blurb += `| <a href="docs/${theVersionString}/${eachLink.link}"> ${eachLink.text}</a> `;
+  }
+}
+
+    blurb += `| <a href="sandboxes/${theVersionString}/sandbox.html"> sandbox</a>`;
 
 if (versionsData[theVersionString].addCommitsLink) {
   blurb += ` | <a href="https://github.com/davidedc/Algebrite/compare/v${nextVersionOlderThan(theVersionString)}...v${theVersionString}"> commits</a>`;
