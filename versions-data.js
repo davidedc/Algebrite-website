@@ -94,7 +94,7 @@ var versionsData = {
 
 "added 'version', 'clear', 'clearall', refactored 'print' and added all the new print* functions. ",
 
-        "otherInfo": "Adding a flag 'assumeRealVariables' for assuming/not assuming variables to be real.",
+        "otherInfo": null,
         "knownIssues":
 
 "'float(sin(2))' gives zero. 'sqrt(x^2)' gives x instead of abs(x). Incorrect " +
