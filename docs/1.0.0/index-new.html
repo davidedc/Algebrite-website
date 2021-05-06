@@ -52,9 +52,15 @@
       currentVersionInHeaderDiv.innerHTML += "v"+algebriteVersionToBeLoaded;
     }
 
+    function generateFunctionReferenceLink () {
+      const functionReferenceLinkDiv = document.getElementById("functionReferenceLink");
+      functionReferenceLinkDiv.innerHTML += `<a href="docs/${algebriteVersionToBeLoaded}/reference.html">function reference</a> </br>`
+    }
+
     function addAllVersionsWhereNeeded () {
       specifyLatestVersionWhereNeeded();
       specifyHeaderVersion();
+      generateFunctionReferenceLink();
     }
 
 
@@ -90,7 +96,7 @@
 <h3>
 <span id="currentVersionInHeader"></span> docs:</h3>
 
-<a href="docs/1.0.0/reference.html">function reference</a> </br>
+<span id="functionReferenceLink"></span>
 <a href="docs/1.0.0/why-tensor-notation-changes-in-v1.0.0.html">why the tensor notation changes in v1.0.0?</a> </br>
 
 
