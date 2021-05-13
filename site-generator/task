@@ -9,7 +9,6 @@ command="$1" && shift
 while (( "$#" )); do
     argument="$1" && shift
     case ${argument} in
-        "--runtime") runtime=$1 && shift;;
         "--theme") theme=$1 && shift;;
         "--target") target=$1 && shift;;
         "--output") output=$1 && shift;;
@@ -17,7 +16,6 @@ while (( "$#" )); do
     esac
 done
 
-runtime=${runtime:-node}
 theme=${theme:-default}
 output=${output:-build}
 
@@ -26,22 +24,14 @@ bold() {
 }
 
 client_build() {
-    case "${runtime}" in
-        "go") go run tools/generator.go ${output} --theme ${theme};;
-        "python") python tools/generator.py ${output} --theme ${theme};;
-        "node") node tools/generator.js ${output} --theme ${theme};;
-    esac
+    node tools/generator.js ${output} --theme ${theme}
 }
 
 client_start() {
     export ENVIRONMENT=development
     client_build
     arguments="${output} --port 8080 --index-page index.html --not-found-page 404.html --redirect-map redirect.map --browse"
-    case "${runtime}" in
-        "go") go run tools/server.go ${arguments};;
-        "python") python tools/server.py ${arguments};;
-        "node") node tools/server.js ${arguments};;
-    esac
+    node tools/server.js ${arguments}
 }
 
 client_deploy() {
