@@ -27,35 +27,6 @@ client_build() {
     node tools/generator.js ${output} --theme ${theme}
 }
 
-client_start() {
-    export ENVIRONMENT=development
-    client_build
-    arguments="${output} --port 8080 --index-page index.html --not-found-page 404.html --redirect-map redirect.map --browse"
-    node tools/server.js ${arguments}
-}
-
-client_deploy() {
-    export ENVIRONMENT=production
-    bold "build"
-    client_build
-    if [ ! -z "${target}" ]; then
-        bold "deploy"
-        deploy/${target} deploy $@
-    fi
-}
-
-client_log() {
-    if [ ! -z "${target}" ]; then
-        deploy/${target} log
-    fi
-}
-
-client_console() {
-    if [ ! -z "${target}" ]; then
-        deploy/${target} console
-    fi
-}
-
 client_watch() {
     export ENVIRONMENT=development
     client_build
@@ -69,36 +40,14 @@ client_watch() {
     esac
 }
 
-client_test() {
-    rm -rf ${output}/*
-    bold "node"
-    ENVIRONMENT=production node tools/generator.js ${output}/node --theme ${theme}
-    bold "go"
-    ENVIRONMENT=production go run tools/generator.go ${output}/go --theme ${theme}
-    bold "python"
-    ENVIRONMENT=production python tools/generator.py ${output}/python --theme ${theme}
-    bold "compare"
-    diff --brief -r ${output}/node/ ${output}/go/
-    diff --brief -r ${output}/node/ ${output}/python/
-}
-
 case "${command}" in
     "build") client_build $@;;
-    "start") client_start $@;;
-    "deploy") client_deploy $@;;
-    "log") client_log $@;;
-    "console") client_console $@;;
     "watch") client_watch $@;;
-    "test") client_test;;
     *)
         echo;
         echo "Usage: $(tty -s && tput bold)$(basename "$0")$(tty -s && tput sgr0) <command> <options>"
         echo
         echo "    build      Build the website"
-        echo "    start      Build and launch simple local web server"
-        echo "    deploy     Build and deploy to production environment"
-        echo "    log        Show production log"
-        echo "    console    Connect to production environment via SSH"
         echo;
     ;;
 esac
