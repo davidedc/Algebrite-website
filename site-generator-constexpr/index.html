@@ -1,0 +1,383 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <meta name="description" content="Algebrite home page">
+    <meta name="keywords" content="JavaScript,Computer algebra system,Symbolic computation,Algebraic computation">
+    <meta name="author" content="Davide Della Casa">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title>Algebrite</title>
+
+    <base href="./">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+    <meta name="viewport" content="width=device-width">
+
+  </head>
+  <body>
+
+  <script constexpr src="versions-data.js"></script>
+  <script constexpr src="versions-data-utils.js"></script>
+
+  <script constexpr>
+
+  function specifyLatestVersionWhereNeeded () {
+    const latestStableInSidePaneDiv = document.getElementById("latestVersionInSidePane");
+    latestStableInSidePaneDiv.innerHTML += "v"+latestStableAlgebriteVersion;
+    setTimeout(function() {window._ConstexprJS_.compile();},1000);
+  }
+
+  document.body.onload = specifyLatestVersionWhereNeeded;
+
+  </script>
+
+    <div class="wrapper">
+      <header>
+        <a href="index.html"><img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
+        <h1>algebrite</h1></a>
+        <p>Computer Algebra System in Javascript.<br><small><a href="https://github.com/davidedc/Algebrite">View on GitHub</a>.<br>latest-stable: <span id="latestVersionInSidePane"></span></small></p>
+
+        <p class="view"><strong><a href="javascript:;" onclick="document.location.hash='Features';">Features</a></strong>
+        <br><small><a href="javascript:;" onclick="document.location.hash='API and scripting';">Usage via API or custom scripting</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Arbitrary-precision arithmetic';">Arbitrary-precision arithmetic</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Complex quantities';">Complex quantities</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Simplification';">Simplification</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Expansion';">Expansion</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Substitution';">Substitution</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Symbolic and numeric roots';">Symbolic and numeric roots</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Units of measurement';">Units of measurement</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Matrices, tensors';">Matrices, tensors</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Derivatives and gradients';">Derivatives and gradients</a>
+        <br><a href="javascript:;" onclick="document.location.hash='Integrals, multi-integrals';">Integrals, multi-integrals</a>
+        </small>
+        </p>
+
+        <strong>
+        <p class="view"><a href="docs/latest-stable/index.html">Docs</a></p>
+        <p class="view"><a href="sandboxes/latest-stable/sandbox.html">Sandbox</a></p>
+        <p class="view"><a href="docs/index.html">Release notes</a></p>
+        <p class="view"><a href="javascript:;" onclick="document.location.hash='References';">Credits/links</a></p>
+        </strong>
+
+
+
+      </header>
+      <section>
+
+<p>Algebrite is a simple, comprehensible and extensible Javascript library for symbolic computation.</p>
+
+
+<h2>Why Algebrite</h2>
+
+Algebrite is...
+<ul>
+<li><b>lightweight:</b> made to be simple to comprehend and extend, it only depends on <a href="https://github.com/peterolson/BigInteger.js">BigInteger.js by Peter Olson</a></li>
+<li><b>self-contained:</b> doesn't need connection to servers or another "backend" CAS</li>
+<li><b>a library:</b> beyond use as an interactive tool, Algebrite can be embedded in your applications and extended with custom functions</li>
+<li><b>free:</b> MIT-Licenced</li>
+</ul>
+
+<h2>
+<a id="Features" class="anchor" href="#Features" aria-hidden="true"></a>Features</h2>
+
+<p>...these are just some of the features. For an organic view please check the <a href="docs/latest-stable/reference.html">function reference</a>.</p>
+
+    <h3>
+    <a id="API and scripting" class="anchor" href="#API and scripting" aria-hidden="true"></a>Usage via API or custom scripting language</h3>
+
+    <p>Algebrite comes with its own scripting language, but all functions are also exposed as API for standard JS integration. See <a href="docs/latest-stable/reference.html">function reference</a> for API description.</p>
+
+    <div style="width:49%; float:left; ">
+    <textarea id="terminal120" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;"># internal scripting language
+x+x</textarea>
+    <textarea id="output120" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(120);" type="button">
+    </div>
+
+    <div style="width:49%; float:left; margin-left:2%;margin-bottom:20px;">
+    <textarea id="terminal121" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">// standard javascript via API
+Algebrite.run('x + x');</textarea>
+    <textarea id="output121" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(121);" type="button">
+    </div>
+
+
+    <div style="clear: both;"></div>
+    <h3>
+    <a id="Arbitrary-precision arithmetic" class="anchor" href="#Arbitrary-precision arithmetic" aria-hidden="true" ></a>Arbitrary-precision arithmetic</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal1" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">100! # gets long after 50000!</textarea>
+    <textarea id="output1" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(1);" type="button">
+    </div>
+    <br>
+
+    <div style="width:100%;">
+    <textarea id="terminal14" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">factor(100!)</textarea>
+    <textarea id="output14" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(14);" type="button">
+    </div>
+    <br>
+
+<h3>Fractions</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal100" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;">
+13579/99999 + 13580/100000
+numerator(1/a+1/b)
+denominator(1/(x-1)/(x-2))
+rationalize(a/b+b/a)</textarea>
+    <textarea id="output100" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(100);" type="button">
+    </div>
+    <br>
+
+<h3>
+<a id="Complex quantities" class="anchor" href="#Complex quantities" aria-hidden="true"></a>Complex quantities: rectangular and polar</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal7" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;">A=1+i
+B=sqrt(2)*exp(i*pi/8)
+A-B
+rect</textarea>
+    <textarea id="output7" name="terminal" rows="3" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(7);" type="button">
+    </div>
+    <br>
+
+
+<h3>
+<a id="Simplification" class="anchor" href="#Simplification" aria-hidden="true"></a>Simplification</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal2" name="terminal" rows="3" cols="80" style="width:100%;margin-bottom:-5px;">simplify(cos(x)^2 + sin(x)^2)
+simplify(a*b+a*c)
+simplify(n!/(n+1)!)</textarea>
+    <textarea id="output2" name="terminal" rows="3" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(2);" type="button">
+    </div>
+    <br>
+
+<h3>
+<a id="Expansion" class="anchor" href="#Expansion" aria-hidden="true"></a>Expansion</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal3" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">(x-1)*(x-2)^3</textarea>
+    <textarea id="output3" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(3);" type="button">
+    </div>
+    <br>
+
+<h3>
+<a id="Substitution" class="anchor" href="#Substitution" aria-hidden="true"></a>Substitution</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal4" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">subst( u, exp(x), 2*exp(x) )</textarea>
+    <textarea id="output4" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(4);" type="button">
+    </div>
+    <br>
+
+<h3>
+<a id="Symbolic and numeric roots" class="anchor" href="#Symbolic and numeric roots" aria-hidden="true"></a>Symbolic and numeric roots</h3>
+
+    ... symbolic solutions of simple polynomials:
+    <div style="width:100%;">
+    <textarea id="terminal161" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">roots(3 x + 12 + y = 24) # first degree (in x)
+roots(a*x^2+b*x+c) # second degree</textarea>
+    <textarea id="output161" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(161);" type="button">
+    </div>
+    <br>
+
+    ... symbolic solutions of higher-degree polynomials or special polynomials:
+    <div style="width:100%;">
+    <textarea id="terminal162" name="terminal" rows="3" cols="80" style="width:100%;margin-bottom:-5px;">roots(x^4 + x^3 + x^2 + x + 1) # third and fourth degree are solved too
+roots(m*x^9 + n) # roots of special polynomials
+roots((x^4+x^3)*(x^4*x^2)) # roots of factorable polynomials</textarea>
+    <textarea id="output162" name="terminal" rows="6" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(162);" type="button"> <small>...give it a few seconds</small>
+    </div>
+    <br>
+
+    ... numeric solutions for even higher-degree irreducible polynomials:
+    <div style="width:100%;">
+    <textarea id="terminal17" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">nroots(x^16+x^15+2)</textarea>
+    <textarea id="output17" name="terminal" rows="4" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(17);" type="button">
+    </div>
+    <br>
+
+<h3>
+<a id="Units of measurement" class="anchor" href="#Units of measurement" aria-hidden="true"></a>Units of measurement</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal5" name="terminal" rows="3" cols="80" style="width:100%;margin-bottom:-5px;">
+velocity=17000*"mile"/"hr"
+time=8*"min"/(60*"min"/"hr")
+velocity/time</textarea>
+    <textarea id="output5" name="terminal" rows="1" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(5);" type="button">
+    </div>
+    <br>
+
+<h3>
+<a id="Matrices, tensors" class="anchor" href="#Matrices, tensors" aria-hidden="true"></a>Matrices, tensors</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal6" name="terminal" rows="6" cols="80" style="width:100%;margin-bottom:-5px;">
+# shows A^−1 = adj A/ det A. (see that the last result is a zero matrix)
+A=[[a,b],[c,d]]
+inv(A)
+adj(A)
+det(A)
+inv(A)-adj(A)/det(A)</textarea>
+    <textarea id="output6" name="terminal" rows="6" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(6);" type="button">
+    </div>
+    <br>
+
+    ... tensors:
+    <div style="width:100%;">
+    <textarea id="terminal9" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;"># Define a tensor function
+F=[x+2y,3x+4y]
+# now the gradient
+d(F,[x,y])</textarea>
+    <textarea id="output9" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(9);" type="button">
+    </div>
+    <br>
+
+    tensors (unlike matrices) can have more than 2 dimensions:
+    <div style="width:100%;">
+    <textarea id="terminal13" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;"># Zero tensor with three dimensions
+zerotensor = zero(2,3,2)
+# get an element
+zerotensor[1,2,2]</textarea>
+    <textarea id="output13" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(13);" type="button">
+    </div>
+    <br>
+
+
+<h3>
+<a id="Derivatives and gradients" class="anchor" href="#Derivatives and gradients" aria-hidden="true"></a>Derivatives and gradients</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal8" name="terminal" rows="4" cols="80" style="width:100%;margin-bottom:-5px;">d(x^2)
+# gradients are derivatives on vectors
+r=sqrt(x^2+y^2)
+d(r,[x,y])</textarea>
+    <textarea id="output8" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(8);" type="button">
+    </div>
+    <br>
+
+
+<h3>
+<a id="Integrals, multi-integrals" class="anchor" href="#Integrals, multi-integrals" aria-hidden="true"></a>Integrals, multi-integrals</h3>
+
+    <div style="width:100%;">
+    <textarea id="terminal10" name="terminal" rows="2" cols="80" style="width:100%;margin-bottom:-5px;">integral(x^2)
+integral(x*y,x,y)</textarea>
+    <textarea id="output10" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(10);" type="button">
+    </div>
+    <br>
+
+    ... computing integrals:
+    <div style="width:100%;">
+    <textarea id="terminal11" name="terminal" rows="1" cols="80" style="width:100%;margin-bottom:-5px;">defint(x^2,y,0,sqrt(1-x^2),x,-1,1)</textarea>
+    <textarea id="output11" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(11);" type="button"> <small>...give it a few seconds</small>
+    </div>
+    <br>
+
+    ... calculating them in the exponential domain:
+    <div style="width:100%;">
+    <textarea id="terminal12" name="terminal" rows="3" cols="80" style="width:100%;margin-bottom:-5px;">f=sin(t)^4-2*cos(t/2)^3*sin(t)
+f=circexp(f)
+defint(f,t,0,2*pi)</textarea>
+    <textarea id="output12" name="terminal" rows="2" cols="80" style="width:100%;"></textarea>
+    <input name="execute" value="&#x25B6;" onclick="execute(12);" type="button"> <small>...give it a few seconds</small>
+    </div>
+    <br>
+
+
+<h2>
+<a id="References" class="anchor" href="#References" aria-hidden="true"></a>Credits and links</h2>
+
+<p>Algebrite is an adaptation of <a href="https://www.google.co.uk/search?q=eigenmath+filetype:pdf">a delightful gem of CAS named EigenMath</a> by George Weigt. Most of his manual applies to Algebrite. See the <a href="docs/latest-stable/reference.html">function reference</a> (adapted from the one compiled by George Weigt for the EigenMath project) for a quick view.
+
+Also you might want to check another fork of EigenMath: <a href="http://smib.sourceforge.net/">SMIB by Philippe Billet</a>.</p>
+
+<p>Another CAS of similar nature is <a href="http://www.sympy.org/en/index.html">SymPy</a>, made in Python.</p>
+
+Other Javascript CAS are:
+    <ul>
+
+        <li><a href="https://github.com/aantthony/javascript-cas">javascript-cas by Anthony Foster</a> supporting "differentiation, complex numbers, sums, vectors (dot products, cross products, gradient/curl etc)"
+        </li>
+
+        <li><a href="http://coffeequate.readthedocs.org/">Coffeequate by Matthew Alger</a> supporting "quadratic and linear equations, simplification of most algebraic expressions, uncertainties propagation, substitutions, variables, constants, and symbolic constants"</li>
+
+        <li><a href="http://algebra.js.org/">Algebra.js by Nicole White</a> which among other things can build and solve equations (up to cubic) via a "chainable" API.</li>
+
+        <li><a href="http://nerdamer.com/">Nerdamer by Martin Donk and others</a> which among other things solves symbolically polynomials up to 3rd degree, supports symbolic integration and differentiation, and handles complex numbers.</li>
+
+        <li><a href="https://github.com/socraticorg/mathsteps">Mathsteps by Evy Kassirer, Ahmed Elnaiem and others</a> focuses on providing "step-by-step solutions for a subset of high school algebra", including polyomials with basic fractions and radicals.</li>
+
+        <li><a href="https://github.com/infusion/Polynomial.js">Polynomial.js by Robert Eisele</a> specifically performs operations on polynomials in the fields: Q, C, Zp and R. (roots/factorisation routines not included).</li>
+
+        <li><a href="https://github.com/Khan/KAS">Kas by the Khan Academy's team</a> can simplify and compare expressions and equations.</li>
+
+        <li><a href="http://mathjs.org/docs/expressions/algebra.html">Math.js by Jos de Jong and others</a> can simplify expressions and figure out derivatives. Handles big numbers, complex numbers, units and matrices.</li>
+
+    </ul>
+
+<p>The sandbox is based on <a href="https://github.com/1j01/simple-console">simple-console</a> by <a href="https://github.com/1j01">Isaiah Odhner</a>. The "pentakis dodecahedron" logo is by <a href="https://thenounproject.com/koutchinski/">Felix Koutchinski</a>.</p>
+
+
+      </section>
+
+    </div>
+
+    <script src="javascripts/scale.fix.js"></script>
+
+<script src="javascripts/jquery.min.js"></script>
+<script src="dist/latest-stable/algebrite.bundle-for-browser.js"></script>
+
+
+  <script type="text/javascript" language="javascript">
+
+
+    function execute (whichTerminal) {
+        var sandbox = $('sandbox');
+        var jsResult = $('jsResult');
+        try {
+          var textToBeExecuted = $('#terminal' + whichTerminal).val();
+          var result;
+          if (/Algebrite\.[a-z]/.test(textToBeExecuted) || /;[ \t]*$/.test(textToBeExecuted)) {
+            result = eval(textToBeExecuted);
+          }
+          else {
+            result = Algebrite.run(textToBeExecuted);
+          }
+          //alert(result);
+          $('#output' + whichTerminal).val(result)
+        }
+        catch (err) {
+          var errDesc = err;
+          errorBox.update('<h4>Error!<\/h4><code>' + errDesc + '<\/code>' );
+          errorBox.show();
+        }
+    }
+
+
+  </script>
+
+
+  </body></html>
