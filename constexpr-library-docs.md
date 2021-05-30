@@ -241,3 +241,33 @@ The code that bootstraps the dynamic behavior is contained in a separate file,  
     document.body.appendChild(el)
 
 [This page](https://fctorial.com/posts/intellij_logos.html)  also uses this technique. The rendering code generates the list of images at compile time and the bootstrap function  initHover  attaches  hover  event listeners to the images. You can find the source code of original page here  [here](https://github.com/fctorial/fctorial.github.io.src/blob/master/posts/intellij_logos.html).
+
+
+---
+
+## API Documentation
+
+Constexpr.js compiler injects some methods in the runtime of a page which the rendering code can use to coordinate/manipulate the behaviour of the compiler. This page describes these methods.
+
+    window._ConstexprJS_.compile()
+    
+The rendering code should call this method once it has finished rendering. The page will be snapshotted and killed shortly after.
+    
+    window._ConstexprJS_.abort(message)
+    
+Call this method if you want the compiler to skip this page. The page will be killed shortly after.
+    
+    window._ConstexprJS_.addPath(path)
+    
+Use this method to tell the compiler that it needs to generate additional HTML files in the output directory. This method doesn't affect the current page in any way. See  [this page](https://fctorial.com/posts/constexprjs_entry_points.html)  for detailed documentation.
+    
+    window._ConstexprJS_.addExclusion(paths)window._ConstexprJS_.addDependency(path)
+    
+Manage dependencies of current page. Read  [this page](https://fctorial.com/posts/constexprjs_dependency_resolution.html)  to learn how the compiler resolves dependencies of a page.
+    
+    window._ConstexprJS_.log(message)
+    
+Print a message on the compiler stdout. The message is prefixed with the generator path before printing.
+
+---
+
