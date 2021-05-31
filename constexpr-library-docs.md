@@ -271,3 +271,63 @@ Print a message on the compiler stdout. The message is prefixed with the generat
 
 ---
 
+
+# Entry Points in constexpr.js
+
+`constexpr.js`  executable requires three mandatory arguments,  `--input`,  `--output`, and  `--entry`.`--entry`  option can be used multiple times in an invocation. Its values must be paths of HTML files relative to the input root:
+
+    constexpr.js --input=. --output=../deployment --entry /index.html --entry /subsite/index.html
+
+This is the sequence of operations constexpr.js compiler performs when it is invoked:
+
+1.  Render all the pages. For each page:
+    1.  Figure out its dependencies (css, images, etc).
+    2.  Snapshot the DOM state when the page finishes rendering.
+    3.  Kill the page.
+2.  Write the DOM snapshots of each page as HTML files.
+3.  Combine the dependency lists of all the pages into a single list.
+4.  Copy dependencies to the output directory.
+
+The compiler maintains a list of pages that it needs to process. In the beginning, this list contains only the pages specified as entry points (`/index.html`  and  `/subsite/index.html`  in the above example). The constexpr code inside these entry points is supposed to use the `addPaths` api hook to notify the compiler about other pages that it needs to render. The argument of this function must be an object with two keys,  `generator` and `output`:
+
+    window._ConstexprJS_.addPath( {
+      generator: "/about.html",
+      output: "/about.html"
+    } )
+
+    window._ConstexprJS_.addPath( {
+      generator: "/posts/generator_from_date.html?2021-jan",
+      output: "/posts/2021-jan.html"
+    } )
+
+These invocations will append `/about.html` and `/posts/generator_from_date.html?2021-jan` to the list of pages that the compiler needs to process. The compilation results of these pages will be written to  `/about.html` and `/posts/2021-jan.html` respectively.
+
+Think of the generator page as a function that takes input in url query string/hash and produces the intended page as output. Try to make this a pure function.
+
+Every page except the entry points will have a parent page which queued it for compilation. The queueing relationship between the pages will form a tree:
+
+    /index.html
+    /about.html
+    /tags.html
+      /tags/javascript.html
+      /tags/webdev.html
+      /tags/clojure.html
+
+You can also use this option to compile only a small number of pages in your website, which might be useful if you have a huge website.
+
+## Links to generated pages
+
+The compiler also maps all the links to generator page (`/posts/generator_from_date.html?2021-jan`) to the correct output HTMLs (`/posts/2021-jan.html`). This ensures that the original and the final website look and work exactly the same when you use this feature.
+
+## Corollary
+
+The motivation behind this feature is to decouple the structure of your output website from the filesystem. The design philosophy of constexpr.js goes against that of traditional static site generators which have a ton of implicit behavior, and plugins add more implicit behavior on top of that. In order to build a website with these SSGs, you need to understand a lot of such implicit behavior, which doesn't have any use outside the bounds of the given SSG.
+
+On the contrary, constexpr.js is just a tool for executing (and stripping) javascript ahead of time. It just happens to be the case that one of the its main use cases is to generate HTML, which is what SSGs do. All of your web development knowledge and experience transfers over seamlessly once you start using constexpr.js. You can think of constexpr.js as a tool for building SSGs, which is surprisingly easy to do because you'll be using a language and runtime whose sole purpose is to deal with HTML and the DOM.
+
+This website contains an implementation of one such SSG in  [renderer.js](https://github.com/fctorial/fctorial.github.io.src/blob/master/static/js/constexpr/renderer.js), and  [tags/generator.html](https://github.com/fctorial/fctorial.github.io.src/blob/master/tags/generator.html).
+
+## See also
+
+[ConstexprJS Now](https://github.com/fctorial/constexprjs_Now), a fully featured clone of  [Jekyll Now](https://www.jekyllnow.com/), a blogging theme for jekyll SSG. A demo has been deployed  [here](https://fctorial.com/raw/constexprjs_now).
+
