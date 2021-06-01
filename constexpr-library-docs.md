@@ -331,3 +331,40 @@ This website contains an implementation of one such SSG in  [renderer.js](https:
 
 [ConstexprJS Now](https://github.com/fctorial/constexprjs_Now), a fully featured clone of  [Jekyll Now](https://www.jekyllnow.com/), a blogging theme for jekyll SSG. A demo has been deployed  [here](https://fctorial.com/raw/constexprjs_now).
 
+---
+
+
+# Dependency resolution
+
+
+The dependency resolution system of constexpr.js is semi-automatic. The compiler figures out the dependencies (css, images, javascript, static files) of a page on its own, but the constexpr code inside a page can override the default behavior if it needs to. This article describes how the dependency resolution process works.
+
+The compiler monitors the HTTP requests made by the pages when they're being rendered. All the local static resources requested by the page are added to the dependency list of that page, with the exception of script files which are marked as `constexpr`.
+
+    <img src="/cat.jpg"/>
+    <script src="/js/ui.js"></script>
+    <script constexpr src="/js/packages/jquery.js"></script>
+    <script constexpr src="/js/render.js"></script>
+
+The above snippet will cause  `ui.js`  and  `cat.jpg`  to be added to the dependency list of the page.  `jquery.js`  and  `render.js`  will not be added to the dependency list.
+
+Consider what would've happened if the rendering code in the page fetched  `jquery.js`  using XHR and then `eval`d it. The compiler will think that the  `jquery.js`  file being fetched is a regular resource and will add it to the dependency list as well. You can use the  `window._ConstexprJS_.addExclusion`  hook to deal with this issue. Exclusions added using this method take precedence over the automatic dependency resolution:
+
+    eval(await fetch('/jquery.js').then(res => res.text()))
+    window._ConstexprJS_.addExclusion('/jquery.js')
+
+Let's consider another scenario. What if some runtime code depended on  `jquery.js`  as well. The file won't be copied because it's excluded using the  `addExclusion`  hook. To deal with this issue, the compiler injects another hook called  `window._ConstexprJS_.addDependency`  that takes precedence over  `addExclusion`. If a resource is specified as a dependency by the page using this hook, it will be included no matter what.
+
+## Summary
+
+These are the dependency resolution mechanisms used by constexpr.js compiler. Mechanisms lower in the list take precedence over the ones that appear before them:
+
+1.  HTTP requests made by the page. (included)
+2.  Scripts included with  `constexpr`  attribute. (excluded)
+3.  `addExclusion`  hook. (excluded)
+4.  `addDependency`  hook. (included)
+
+### Note
+
+Dependencies aren't copied over if  `--skip-resources`  option is specified. The dependency resolution process works independent of this option and the dependency information will be exported if  `--deps`  option is specified.
+
