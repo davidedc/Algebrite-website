@@ -368,3 +368,137 @@ These are the dependency resolution mechanisms used by constexpr.js compiler. Me
 
 Dependencies aren't copied over if  `--skip-resources`  option is specified. The dependency resolution process works independent of this option and the dependency information will be exported if  `--deps`  option is specified.
 
+---
+
+
+## Constexpr.js hello world
+
+
+You'll need the latest version of constexpr.js to follow along with this article:
+
+    npm i -g constexpr.js@latest
+
+You'll also need python for serving your website. Create a new directory and start serving that directory over HTTP:
+
+    mkdir constexprjs_playground
+    cd constexprjs_playground
+    python -m http.server 3000
+
+We will start by creating a simple webpage. Create an  index.html  inside the directory that is being served:
+
+    <html>
+    <head>
+    <title>Timestamp example</title>
+    <script>
+    function render_page() {
+    const a = parseInt(document.querySelector('#a').textContent)
+    const b = parseInt(document.querySelector('#b').textContent)
+    document.querySelector('#result').textContent = a + b + ''
+    document.querySelector('#timestamp').textContent = new Date()
+    }
+    window.onload = render_page
+    </script>
+    </head>
+    <body>
+    <h1>Compile Time Evaluation</h1>
+    <p> <span id="a">2</span> + <span id="b">2</span> = <span id="result">?</span> </p>
+    <p> This page was rendered on : <span id="timestamp"></span> </p>
+    </body>
+    </html>
+
+Open  [http://localhost:3000](http://localhost:3000/)  in a browser. You should see a page with the equation result and the current date-time. Try reloading the page. You should see the timestamp change with each reload.
+
+This page contains some javascript, but that javascript doesn't do anything other than taking two numbers from the DOM, adding them, and storing the result back in the DOM. We can use constexpr.js to evaluate and strip the javascript that does this work ahead of time. To do that, mark the script tag that does this work as  constexpr  and modify the code so that it calls the constexpr.js compilation hook after it has done its work:
+
+    ...
+    <script constexpr>
+    function render_page() {
+    const a = parseInt(document.querySelector('#a').textContent)
+    const b = parseInt(document.querySelector('#b').textContent)
+    document.querySelector('#result').textContent = a + b + ''
+    document.querySelector('#timestamp').textContent = new Date()
+    window._ConstexprJS_.compile()
+    }
+    window.onload = render_page
+    </script>
+    ...
+
+And run the constexpr.js compiler:
+
+    constexpr.js --input=. --output=_out --entry=/index.html
+
+This will generate a file  `_out/index.html`. You can access it at  [http://localhost:3000/_out](http://localhost:3000/_out). This will be the contents of that generated webpage:
+
+    <html>
+    <head>
+    <title>Timestamp example</title>
+    </head>
+    <body>
+    <h1>Compile Time Evaluation</h1>
+    <p> <span id="a">2</span> + <span id="b">2</span> = <span id="result">4</span> </p>
+    <p>
+    This page was rendered on :
+    <span id="timestamp">Sat Apr 24 2021 17:48:52 GMT+0530 (India Standard Time)</span>
+    </p>
+    </body>
+    </html>
+
+As you can see, it does not have any javascript. Since the javascript that generates the webpage will be stripped out, we don't have to worry about javascript bloat. Let's include jquery for doing DOM manipulation, even though we'll be using just one function from jquery:
+
+    wget https://code.jquery.com/jquery-3.6.0.min.js
+
+    ...
+    <script constexpr src="./jquery-3.6.0.min.js"></script>
+    <script constexpr> function render_page() { 
+    const a = parseInt($('#a').text())
+    const b = parseInt($('#b').text())
+    $('#result').text(a + b + '')
+    $('#timestamp').text(new Date())
+    window._ConstexprJS_.compile()
+    }
+    window.onload = render_page
+    </script>
+    ...
+
+Note that we are including the jquery file as constexpr. This new input HTML will generate the exact same HTML as output (except the timestamp). Let's now add some styling to our page and extract the rendering code to a separate javascript file:
+
+#### styles.css
+
+    :root {
+    background: #af7070;
+    }
+    body {
+    width: 50%;
+    margin: auto;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    #timestamp, p:nth-child(2) {
+    padding: 3px;
+    background: #f3b0b0;
+    border-radius: 2px;
+    }
+
+#### renderer.js
+
+    function render_page() {
+    const a = parseInt($('#a').text())
+    const b = parseInt($('#b').text())
+    $('#result').text(a + b + '')
+    $('#timestamp').text(new Date())
+    window._ConstexprJS_.compile()
+    }
+    window.onload = render_page
+
+#### HTML
+
+    ...
+    <script constexpr src="./jquery-3.6.0.min.js"></script>
+    <script constexpr src="./renderer.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    ...
+
+Now when you run the compiler,  `styles.css`  will be copied to the  `_out`  directory.  `jquery-3.6.0.min.js`  and  `renderer.js`  will not be copied to the output directory since they are included as constexpr. The compiler will copy other types of resources as well.
+
