@@ -167,27 +167,31 @@ Finally we'll modify the rendering code to add a  script  tag to our page that c
       window._ConstexprJS_.compile()
     </script>
 
-TODO Now when you run the compiler, you will get the following page as output:
+Now when you run the compiler, you will get the following page as output:
 
     <html>
-    <head>
-    <title>Dynamic Pages Example</title>
-    <script>
-    function runtime_bootstrap() {
-    document.querySelector('button').addEventListener('click', () => {
-    let result = 0
-    document.querySelector('#timestamp').textContent.split(':').forEach(s => result += parseInt(s)) alert(result)
-    })
-    }
-    </script>
-    </head>
-    <body>
-    <p>This page was rendered on: <span id="timestamp">2:32:13</span></p>
-    <button>Calculate</button>
-    <script>
-    runtime_bootstrap()
-    </script>
-    </body>
+
+      <head>
+        <title>Dynamic Pages Example</title>
+        <script>
+          function runtime_bootstrap() {
+            document.querySelector('button').addEventListener('click', () => {
+              let result = 0
+              document.querySelector('#timestamp').textContent.split(':').forEach(s => result += parseInt(s))
+              alert(result)
+            })
+          }
+        </script>
+      </head>
+
+      <body>
+        <p>This page was rendered on: <span id="timestamp">2:32:13</span></p>
+        <button>Calculate</button>
+        <script>
+          runtime_bootstrap()
+        </script>
+      </body>
+
     </html>
 
 This page contains three things:
@@ -198,22 +202,6 @@ This page contains three things:
 
 All the rendering code has been stripped out.
 
-## Implementation in this website
-
-The mobile view transitions in this site use javascript. If you're on desktop, you can test it by enabling mobile emulation in devtools (Top left in chrome and top right in firefox).
-
-In this website, the rendering code generates all the site global theming (navbar, sidebars, syntax highlighting etc). I've put this code in  [/static/js/constexpr/renderer.js](https://github.com/fctorial/fctorial.github.io.src/blob/master/static/js/constexpr/renderer.js). This script is  [included as constexpr in every page](https://github.com/fctorial/fctorial.github.io.src/blob/master/devtools/_template.html).
-
-The code that bootstraps the dynamic behavior is contained in a separate file,  [/static/js/dynamic.js](https://github.com/fctorial/fctorial.github.io.src/blob/master/static/js/dynamic.js). The constexpr code in  renderer.js  adds this script tag to every page once it has finished rendering:
-
-    el = document.createElement('script')
-    el.src = '/static/js/dynamic.js'
-    document.body.appendChild(el)
-
-[This page](https://fctorial.com/posts/intellij_logos.html)  also uses this technique. The rendering code generates the list of images at compile time and the bootstrap function  initHover  attaches  hover  event listeners to the images. You can find the source code of original page here  [here](https://github.com/fctorial/fctorial.github.io.src/blob/master/posts/intellij_logos.html).
-
-
----
 
 ## API Documentation
 
@@ -229,11 +217,12 @@ Call this method if you want the compiler to skip this page. The page will be ki
     
     window._ConstexprJS_.addPath(path)
     
-Use this method to tell the compiler that it needs to generate additional HTML files in the output directory. This method doesn't affect the current page in any way. See  [this page](https://fctorial.com/posts/constexprjs_entry_points.html)  for detailed documentation.
+Use this method to tell the compiler that it needs to generate additional HTML files in the output directory. This method doesn't affect the current page in any way. See [this page](https://fctorial.com/posts/constexprjs_entry_points.html) for detailed documentation.
     
-    window._ConstexprJS_.addExclusion(paths)window._ConstexprJS_.addDependency(path)
+    window._ConstexprJS_.addExclusion(paths)
+    window._ConstexprJS_.addDependency(path)
     
-Manage dependencies of current page. Read  [this page](https://fctorial.com/posts/constexprjs_dependency_resolution.html)  to learn how the compiler resolves dependencies of a page.
+Manage dependencies of current page. Read [this page](https://fctorial.com/posts/constexprjs_dependency_resolution.html) to learn how the compiler resolves dependencies of a page.
     
     window._ConstexprJS_.log(message)
     
@@ -272,6 +261,8 @@ The compiler maintains a list of pages that it needs to process. In the beginnin
 
 These invocations will append `/about.html` and `/posts/generator_from_date.html?2021-jan` to the list of pages that the compiler needs to process. The compilation results of these pages will be written to  `/about.html` and `/posts/2021-jan.html` respectively.
 
+Note that the compiler also rewrites all the links to generator page (`/posts/generator_from_date.html?2021-jan`) to the correct output HTMLs (`/posts/2021-jan.html`) - this ensures that the original and the final website look and work exactly the same when you use this feature.
+
 Think of the generator page as a function that takes input in url query string/hash and produces the intended page as output. Try to make this a pure function.
 
 Every page except the entry points will have a parent page which queued it for compilation. The queueing relationship between the pages will form a tree:
@@ -285,17 +276,13 @@ Every page except the entry points will have a parent page which queued it for c
 
 You can also use this option to compile only a small number of pages in your website, which might be useful if you have a huge website.
 
-## Links to generated pages
-
-The compiler also maps all the links to generator page (`/posts/generator_from_date.html?2021-jan`) to the correct output HTMLs (`/posts/2021-jan.html`). This ensures that the original and the final website look and work exactly the same when you use this feature.
-
 ## Corollary
 
 The motivation behind this feature is to decouple the structure of your output website from the filesystem. The design philosophy of constexpr.js goes against that of traditional static site generators which have a ton of implicit behavior, and plugins add more implicit behavior on top of that. In order to build a website with these SSGs, you need to understand a lot of such implicit behavior, which doesn't have any use outside the bounds of the given SSG.
 
 On the contrary, constexpr.js is just a tool for executing (and stripping) javascript ahead of time. It just happens to be the case that one of the its main use cases is to generate HTML, which is what SSGs do. All of your web development knowledge and experience transfers over seamlessly once you start using constexpr.js. You can think of constexpr.js as a tool for building SSGs, which is surprisingly easy to do because you'll be using a language and runtime whose sole purpose is to deal with HTML and the DOM.
 
-This website contains an implementation of one such SSG in  [renderer.js](https://github.com/fctorial/fctorial.github.io.src/blob/master/static/js/constexpr/renderer.js), and  [tags/generator.html](https://github.com/fctorial/fctorial.github.io.src/blob/master/tags/generator.html).
+This website contains an implementation of one such SSG in [renderer.js](https://github.com/fctorial/fctorial.github.io.src/blob/master/static/js/constexpr/renderer.js), and [tags/generator.html](https://github.com/fctorial/fctorial.github.io.src/blob/master/tags/generator.html).
 
 ## See also
 
@@ -357,39 +344,42 @@ You'll also need python for serving your website. Create a new directory and sta
 We will start by creating a simple webpage. Create an  index.html  inside the directory that is being served:
 
     <html>
-    <head>
-    <title>Timestamp example</title>
-    <script>
-    function render_page() {
-    const a = parseInt(document.querySelector('#a').textContent)
-    const b = parseInt(document.querySelector('#b').textContent)
-    document.querySelector('#result').textContent = a + b + ''
-    document.querySelector('#timestamp').textContent = new Date()
-    }
-    window.onload = render_page
-    </script>
-    </head>
-    <body>
-    <h1>Compile Time Evaluation</h1>
-    <p> <span id="a">2</span> + <span id="b">2</span> = <span id="result">?</span> </p>
-    <p> This page was rendered on : <span id="timestamp"></span> </p>
-    </body>
+
+      <head>
+      <title>Timestamp example</title>
+      <script>
+        function render_page() {
+          const a = parseInt(document.querySelector('#a').textContent)
+          const b = parseInt(document.querySelector('#b').textContent)
+          document.querySelector('#result').textContent = a + b + ''
+          document.querySelector('#timestamp').textContent = new Date()
+        }
+        window.onload = render_page
+      </script>
+      </head>
+
+      <body>
+        <h1>Compile Time Evaluation</h1>
+        <p> <span id="a">2</span> + <span id="b">2</span> = <span id="result">?</span> </p>
+        <p> This page was rendered on : <span id="timestamp"></span> </p>
+      </body>
+
     </html>
 
-Open  [http://localhost:3000](http://localhost:3000/)  in a browser. You should see a page with the equation result and the current date-time. Try reloading the page. You should see the timestamp change with each reload.
+Open [http://localhost:3000](http://localhost:3000/) in a browser. You should see a page with the equation result and the current date-time. Try reloading the page. You should see the timestamp change with each reload.
 
 This page contains some javascript, but that javascript doesn't do anything other than taking two numbers from the DOM, adding them, and storing the result back in the DOM. We can use constexpr.js to evaluate and strip the javascript that does this work ahead of time. To do that, mark the script tag that does this work as  constexpr  and modify the code so that it calls the constexpr.js compilation hook after it has done its work:
 
     ...
     <script constexpr>
-    function render_page() {
-    const a = parseInt(document.querySelector('#a').textContent)
-    const b = parseInt(document.querySelector('#b').textContent)
-    document.querySelector('#result').textContent = a + b + ''
-    document.querySelector('#timestamp').textContent = new Date()
-    window._ConstexprJS_.compile()
-    }
-    window.onload = render_page
+      function render_page() {
+        const a = parseInt(document.querySelector('#a').textContent)
+        const b = parseInt(document.querySelector('#b').textContent)
+        document.querySelector('#result').textContent = a + b + ''
+        document.querySelector('#timestamp').textContent = new Date()
+        window._ConstexprJS_.compile()
+      }
+      window.onload = render_page
     </script>
     ...
 
@@ -397,20 +387,23 @@ And run the constexpr.js compiler:
 
     constexpr.js --input=. --output=_out --entry=/index.html
 
-This will generate a file  `_out/index.html`. You can access it at  [http://localhost:3000/_out](http://localhost:3000/_out). This will be the contents of that generated webpage:
+This will generate a file  `_out/index.html`. You can access it at [http://localhost:3000/_out](http://localhost:3000/_out). This will be the contents of that generated webpage:
 
     <html>
-    <head>
-    <title>Timestamp example</title>
-    </head>
-    <body>
-    <h1>Compile Time Evaluation</h1>
-    <p> <span id="a">2</span> + <span id="b">2</span> = <span id="result">4</span> </p>
-    <p>
-    This page was rendered on :
-    <span id="timestamp">Sat Apr 24 2021 17:48:52 GMT+0530 (India Standard Time)</span>
-    </p>
-    </body>
+
+      <head>
+        <title>Timestamp example</title>
+      </head>
+
+      <body>
+        <h1>Compile Time Evaluation</h1>
+        <p> <span id="a">2</span> + <span id="b">2</span> = <span id="result">4</span> </p>
+        <p>
+        This page was rendered on :
+        <span id="timestamp">Sat Apr 24 2021 17:48:52 GMT+0530 (India Standard Time)</span>
+        </p>
+      </body>
+
     </html>
 
 As you can see, it does not have any javascript. Since the javascript that generates the webpage will be stripped out, we don't have to worry about javascript bloat. Let's include jquery for doing DOM manipulation, even though we'll be using just one function from jquery:
@@ -419,14 +412,15 @@ As you can see, it does not have any javascript. Since the javascript that gener
 
     ...
     <script constexpr src="./jquery-3.6.0.min.js"></script>
-    <script constexpr> function render_page() { 
-    const a = parseInt($('#a').text())
-    const b = parseInt($('#b').text())
-    $('#result').text(a + b + '')
-    $('#timestamp').text(new Date())
-    window._ConstexprJS_.compile()
-    }
-    window.onload = render_page
+    <script constexpr>
+      function render_page() { 
+        const a = parseInt($('#a').text())
+        const b = parseInt($('#b').text())
+        $('#result').text(a + b + '')
+        $('#timestamp').text(new Date())
+        window._ConstexprJS_.compile()
+      }
+      window.onload = render_page
     </script>
     ...
 
@@ -435,30 +429,30 @@ Note that we are including the jquery file as constexpr. This new input HTML wil
 #### styles.css
 
     :root {
-    background: #af7070;
+      background: #af7070;
     }
     body {
-    width: 50%;
-    margin: auto;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+      width: 50%;
+      margin: auto;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     #timestamp, p:nth-child(2) {
-    padding: 3px;
-    background: #f3b0b0;
-    border-radius: 2px;
+      padding: 3px;
+      background: #f3b0b0;
+      border-radius: 2px;
     }
 
 #### renderer.js
 
     function render_page() {
-    const a = parseInt($('#a').text())
-    const b = parseInt($('#b').text())
-    $('#result').text(a + b + '')
-    $('#timestamp').text(new Date())
-    window._ConstexprJS_.compile()
+      const a = parseInt($('#a').text())
+      const b = parseInt($('#b').text())
+      $('#result').text(a + b + '')
+      $('#timestamp').text(new Date())
+      window._ConstexprJS_.compile()
     }
     window.onload = render_page
 
@@ -471,4 +465,3 @@ Note that we are including the jquery file as constexpr. This new input HTML wil
     ...
 
 Now when you run the compiler,  `styles.css`  will be copied to the  `_out`  directory.  `jquery-3.6.0.min.js`  and  `renderer.js`  will not be copied to the output directory since they are included as constexpr. The compiler will copy other types of resources as well.
-
