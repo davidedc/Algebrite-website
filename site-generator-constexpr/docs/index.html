@@ -41,8 +41,18 @@
               output: "/docs/"+eachVersion+"/index.html"
           } );
 
+          window._ConstexprJS_.addPath( {
+              generator: "/sandboxes/sandbox-good-for-all-versions/sandbox.html?version=" + eachVersion,
+              output: "/sandboxes/"+eachVersion+"/sandbox.html"
+          } );
 
       }
+
+
+      window._ConstexprJS_.addPath( {
+          generator: "/sandboxes/sandbox-good-for-all-versions/sandbox.html?version=latest-stable",
+          output: "/sandboxes/latest-stable/sandbox.html"
+      } );
 
     },1000);
   }
@@ -79,7 +89,7 @@
 
     // see whether adding these at the end helps
     moreLinks.push("docs/"+referenceLink);
-    moreLinks.push("docs/"+versionSpecificDocPath);
+    //moreLinks.push("docs/"+versionSpecificDocPath);
     //moreLinks.push(sandboxLink);
 
 
