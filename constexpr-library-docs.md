@@ -16,7 +16,7 @@ The generated pages don't have to be completely static. For example, disqus inte
 
 The new website will look exactly like the original website after the pages finish rendering. This is one of the basic principles of constexpr.js. So you can build your website as usual and run the compiler once you're happy with the results.
 
-## How to use it?
+## How to use it
 
 You will have to divide the javascript being used in your page into two groups: "Runtime" javascript and "compile time" javascript, and annotate all compile time script tags withconstexpr  attribute:
 
