@@ -81,10 +81,16 @@
   }
 
   function versionBlurb(theVersionString) {
-    var i, eachLink, len, extraDocLink;
+    var i, eachLink, len, extraDocLink, sandboxLink;
+
+    if (window.location.href.includes("site-generator-constexpr")) {
+        sandboxLink = "/sandboxes/sandbox-good-for-all-versions/sandbox.html?version=" + theVersionString;
+    }
+    else {
+        sandboxLink = `sandboxes/${theVersionString}/sandbox.html`;
+    }
 
     var referenceLink = `${theVersionString}/reference.html`;
-    var sandboxLink = `sandboxes/${theVersionString}/sandbox.html`;
     var versionSpecificDocPath = `${theVersionString}/index.html`;
 
     // see whether adding these at the end helps
