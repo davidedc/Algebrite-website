@@ -84,7 +84,8 @@
     var i, eachLink, len, extraDocLink, sandboxLink, versionSpecificDocPath;
 
     if (window.location.href.includes("site-generator-constexpr")) {
-        sandboxLink = "/sandboxes/sandbox-good-for-all-versions/sandbox.html?version=" + theVersionString;
+        sandboxLink = `/sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${theVersionString}`;
+        versionSpecificDocPath = `page-good-for-all-versions/index.html?version=${theVersionString}`;
     }
     else {
         sandboxLink = `sandboxes/${theVersionString}/sandbox.html`;
