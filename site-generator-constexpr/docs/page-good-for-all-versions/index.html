@@ -31,7 +31,9 @@
     }
     </style>
 
-    <script src="../../get-url-parameter.js"></script>
+    <script src="get-url-parameter.js"></script>
+    <script src="versions-data.js"></script>
+    <script src="versions-data-utils.js"></script>
 
 </head>
 
@@ -56,7 +58,7 @@
 
 
 <h3>
-v.1.4.0 (latest-stable) docs:</h3>
+<span id="versionInHeaderSpan"></span> docs:</h3>
 
 <a href="docs/1.4.0/reference.html">function reference</a> <br>
 <br>
@@ -68,18 +70,50 @@ v.1.4.0 (latest-stable) docs:</h3>
 
     </div>
 
+    <script type='text/javascript'>
+        // this if checks if the page has already been compiled, in which case the spans and links
+        // aready have everything correct
+        if (!(!window._ConstexprJS_ && !window.location.href.includes("site-generator-constexpr") )) {
+            // get the algebrite version to be loaded directly from the URL
+            var algebriteVersionToBeLoaded;
 
-    <script constexpr>
+            // get the algebrite version to be loaded directly from the URL
+            algebriteVersionToBeLoaded = getURLParameter("version");
 
-        // get the algebrite version to be loaded directly from the URL
-        var algebriteVersionToBeLoaded = getURLParameter("version");
-        document.write("<h1>"+ algebriteVersionToBeLoaded + "</h1>");
+            if (algebriteVersionToBeLoaded === undefined) {
+                algebriteVersionToBeLoaded = window.location.pathname.replace(/.*docs\//,"").replace(/\/.*/,"");
+            }
 
-        window._ConstexprJS_.compile();
+            if (algebriteVersionToBeLoaded === "latest-stable") {
+                algebriteVersionToBeLoaded = latestStableAlgebriteVersion;
+            }
+
+            const versionInHeaderSpan = document.getElementById("versionInHeaderSpan");
+            versionInHeaderSpan.innerHTML += "v" + algebriteVersionToBeLoaded;
+
+            if (algebriteVersionToBeLoaded === latestStableAlgebriteVersion){
+                versionInHeaderSpan.innerHTML += " (latest-stable)";
+            }
+        }
 
     </script>
 
-  
+
+    <script constexpr>
+        if (!window._ConstexprJS_) {
+            window._ConstexprJS_ = {
+                compile: () => {},
+                abort: () => {},
+                addPath: () => {},
+                addExclusion: () => {},
+                addDependency: () => {},
+                log: () => {}
+            }
+        }
+        else {
+            window._ConstexprJS_.compile();
+        }
+    </script>
 
   
 </body></html>
