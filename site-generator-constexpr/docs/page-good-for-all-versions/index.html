@@ -31,6 +31,7 @@
     }
     </style>
 
+    <script src="utils-always-loaded.js"></script>
     <script src="get-url-parameter.js"></script>
     <script src="versions-data.js"></script>
     <script src="versions-data-utils.js"></script>
@@ -73,7 +74,9 @@
     <script type='text/javascript'>
         // this if checks if the page has already been compiled, in which case the spans and links
         // aready have everything correct
-        if (!(!window._ConstexprJS_ && !window.location.href.includes("site-generator-constexpr") )) {
+        // otherwise, the page is being accessed "as a template", or it's being compiled, in which case
+        // nothing is baked, and we need to do everything.
+        if (!compiled()) {
             // get the algebrite version to be loaded directly from the URL
             var algebriteVersionToBeLoaded;
 
