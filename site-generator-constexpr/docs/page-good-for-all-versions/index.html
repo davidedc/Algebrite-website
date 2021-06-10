@@ -61,7 +61,7 @@
 <h3>
 <span id="versionInHeaderSpan"></span> docs:</h3>
 
-<a href="docs/1.4.0/reference.html">function reference</a> <br>
+<span id="referenceLinkSpan"></span> <br>
 <br>
 <br>
 
@@ -97,6 +97,10 @@
             if (algebriteVersionToBeLoaded === latestStableAlgebriteVersion){
                 versionInHeaderSpan.innerHTML += " (latest-stable)";
             }
+
+            const referenceLinkSpan = document.getElementById("referenceLinkSpan");
+            referenceLinkSpan.innerHTML += `<a href="docs/${algebriteVersionToBeLoaded}/reference.html">function reference</a>`;
+
         }
 
     </script>
