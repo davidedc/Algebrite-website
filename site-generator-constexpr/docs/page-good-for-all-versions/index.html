@@ -62,6 +62,7 @@
 <span id="versionInHeaderSpan"></span> docs:</h3>
 
 <span id="referenceLinkSpan"></span> <br>
+<span id="sandboxLinkSpan"></span> <br>
 <br>
 <br>
 
@@ -72,6 +73,7 @@
     </div>
 
     <script type='text/javascript'>
+        const sandboxLinkSpan = document.getElementById("sandboxLinkSpan");
         // this if checks if the page has already been compiled, in which case the spans and links
         // already have everything correct
         // otherwise, the page is being accessed "as a template", or it's being compiled, in which case
@@ -101,6 +103,8 @@
             const referenceLinkSpan = document.getElementById("referenceLinkSpan");
             referenceLinkSpan.innerHTML += `<a href="docs/${algebriteVersionToBeLoaded}/reference.html">function reference</a>`;
 
+            sandboxLinkSpan.innerHTML = `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${algebriteVersionToBeLoaded}">sandbox</a>`;
+
         }
 
     </script>
@@ -118,6 +122,7 @@
             }
         }
         else {
+            sandboxLinkSpan.innerHTML = `<a href="sandboxes/${algebriteVersionToBeLoaded}/sandbox.html">sandbox</a>`;
             window._ConstexprJS_.compile();
         }
     </script>
