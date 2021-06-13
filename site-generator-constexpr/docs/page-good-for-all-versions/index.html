@@ -93,6 +93,19 @@
                 algebriteVersionToBeLoaded = latestStableAlgebriteVersion;
             }
 
+
+            //////////////////////
+            // Fix the page title
+            //////////////////////
+            var documentTitle = "Algebrite v";
+            documentTitle += algebriteVersionToBeLoaded;
+            if (algebriteVersionToBeLoaded === latestStableAlgebriteVersion){
+                documentTitle += " (latest-stable)";
+            }
+            documentTitle += " docs"
+            document.title =  documentTitle
+
+
             const versionInHeaderSpan = document.getElementById("versionInHeaderSpan");
             versionInHeaderSpan.innerHTML += "v" + algebriteVersionToBeLoaded;
 
