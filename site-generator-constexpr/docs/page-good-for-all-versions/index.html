@@ -63,6 +63,7 @@
 
 <span id="referenceLinkSpan"></span> <br>
 <span id="sandboxLinkSpan"></span> <br>
+<span id="extraDocsLinksSpan"></span> <br>
 <br>
 <br>
 
@@ -117,6 +118,15 @@
             referenceLinkSpan.innerHTML += `<a href="docs/${algebriteVersionToBeLoaded}/reference.html">function reference</a>`;
 
             sandboxLinkSpan.innerHTML = `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${algebriteVersionToBeLoaded}">sandbox</a>`;
+
+            if (versionsData[algebriteVersionToBeLoaded].otherLinks) {
+                for (i = 0, len = versionsData[algebriteVersionToBeLoaded].otherLinks.length; i < len; i++) {
+                    eachLink = versionsData[algebriteVersionToBeLoaded].otherLinks[i];
+                    extraDocLink = `${algebriteVersionToBeLoaded}/${eachLink.link}`;
+                    extraDocsLinksSpan.innerHTML += `<a href="docs/${extraDocLink}"> ${eachLink.text}</a><br> `;
+                }
+            }
+
 
         }
 
