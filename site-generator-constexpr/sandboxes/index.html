@@ -32,31 +32,62 @@
       <section>
 
 
-<h3>
-Latest version's sandbox</h3>
+  <h2>
+      Latest stable sandbox</h2>
 
-<a href="sandboxes/latest-stable/sandbox.html">latest (v1.4.0)</a>
+  <div id="latest-stable-sandbox">
+  </div>
 
-<br>
-<br>
+  <br>
+  <hr>
 
-<h3>
-All versions' sandboxes</h3>
 
-<a href="sandboxes/1.4.0/sandbox.html">v1.4.0</a><br>
-<a href="sandboxes/1.3.1/sandbox.html">v1.3.1</a><br>
-<a href="sandboxes/1.3.0/sandbox.html">v1.3.0</a><br>
-<a href="sandboxes/1.2.1/sandbox.html">v1.2.1</a><br>
-<a href="sandboxes/1.2.0/sandbox.html">v1.2.0</a><br>
-<a href="sandboxes/1.0.0/sandbox.html">v1.0.0</a><br>
-<a href="sandboxes/0.4.2/sandbox.html">v0.4.2</a><br>
-<a href="sandboxes/0.3.13/sandbox.html">v0.3.13</a><br>
-<a href="sandboxes/0.2.23/sandbox.html">v0.2.23</a>
+  <h2>
+      All versions' sandboxes</h2>
+
+  <div id="all-versions-sandboxes">
+  </div>
+
 
 
       </section>
 
     </div>
+
+    <script constexpr src="versions-data.js"></script>
+    <script constexpr src="versions-data-utils.js"></script>
+
+    <script>
+        function sandboxLinkBlurb(theVersionString) {
+            var i, eachLink, len, extraDocLink, sandboxLink, versionSpecificDocPath;
+
+            if (window.location.href.includes("site-generator-constexpr")) {
+                sandboxLink = `sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${theVersionString}`;
+            } else {
+                sandboxLink = `sandboxes/${theVersionString}/sandbox.html`;
+            }
+
+            return `<a href="${sandboxLink}">v${theVersionString}</a><br>`;
+
+        }
+
+        const latestVersionsSandboxesDiv = document.getElementById("latest-stable-sandbox");
+        if (window.location.href.includes("site-generator-constexpr")) {
+            latestVersionsSandboxesDiv.innerHTML += `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=latest-stable">latest (${latestStableAlgebriteVersion})</a>`;
+        }
+        else {
+            latestVersionsSandboxesDiv.innerHTML += `<a href="sandboxes/latest-stable/sandbox.html">latest (${latestStableAlgebriteVersion})</a>`;
+        }
+
+        const allVersionsSandboxesDiv = document.getElementById("all-versions-sandboxes");
+
+        for (i = 0, len = sortedVersionsFromNewToOld.length; i < len; i++) {
+            eachVersion = sortedVersionsFromNewToOld[i];
+            allVersionsSandboxesDiv.innerHTML += sandboxLinkBlurb(eachVersion);
+        }
+
+
+    </script>
 
     <script constexpr>
       if (!window._ConstexprJS_) {
