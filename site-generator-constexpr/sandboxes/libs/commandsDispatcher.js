@@ -6,12 +6,25 @@ var con = new SimpleConsole({
 });
 document.body.appendChild(con.element);
 
-var welcomeMessage = "Algebrite v";
-welcomeMessage += algebriteVersionToBeLoaded;
-if (algebriteVersionToBeLoaded === latestStableAlgebriteVersion){
-  welcomeMessage += " (latest-stable)";
+var welcomeMessage = "Algebrite ";
+
+
+if (versionFromURL === "latest-stable") {
+    welcomeMessage = "Latest stable (v";
+    welcomeMessage += algebriteVersion;
+    welcomeMessage += ") sandbox"
 }
-welcomeMessage += " sandbox (both Algebrite scripting and Algebrite JS API modes)<br/>";
+else {
+    welcomeMessage = "v";
+    welcomeMessage += algebriteVersion;
+    if (versionFromURL === latestStableAlgebriteVersion) {
+        welcomeMessage += " (latest-stable)";
+    }
+    welcomeMessage += " sandbox"
+}
+
+
+welcomeMessage += " (both Algebrite scripting and Algebrite JS API modes)<br/>";
 welcomeMessage += "&nbsp;• end a line with ';' to indicate you are using JS API mode, otherwise input<br/>";
 welcomeMessage += "&nbsp;&nbsp;&nbsp;&nbsp;will be interpreted as an Algebrite script.<br/>";
 welcomeMessage += "&nbsp;• hit shift-enter for multiple lines (works for Algebrite scripts better)<br/>";

@@ -48,11 +48,21 @@
 
       }
 
+      window._ConstexprJS_.addPath( {
+          generator: "/docs/page-good-for-all-versions/index.html?version=latest-stable",
+          output: "/docs/latest-stable/index.html"
+      } );
+
+      window._ConstexprJS_.addPath( {
+          generator: `/docs/${latestStableAlgebriteVersion}/reference.html`,
+          output: "/docs/latest-stable/reference.html"
+      } );
 
       window._ConstexprJS_.addPath( {
           generator: "/sandboxes/sandbox-good-for-all-versions/sandbox.html?version=latest-stable",
           output: "/sandboxes/latest-stable/sandbox.html"
       } );
+
 
     },1000);
   }
@@ -66,7 +76,7 @@
   function buildVersionsBlurbs () {
 
     const latestStableInfoDiv = document.getElementById("latest-stable-info");
-    latestStableInfoDiv.innerHTML += versionBlurb(latestStableAlgebriteVersion);
+    latestStableInfoDiv.innerHTML += versionBlurb("latest-stable");
 
 
     var i, eachVersion, len;
@@ -83,7 +93,13 @@
   function versionBlurb(theVersionString) {
     var i, eachLink, len, extraDocLink, sandboxLink, versionSpecificDocPath;
 
-    if (window.location.href.includes("site-generator-constexpr")) {
+      var versionStringAlwaysMajorMinorPatch = theVersionString;
+      if (versionStringAlwaysMajorMinorPatch === "latest-stable") {
+          versionStringAlwaysMajorMinorPatch = latestStableAlgebriteVersion;
+      }
+
+
+      if (window.location.href.includes("site-generator-constexpr")) {
         sandboxLink = `sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${theVersionString}`;
         versionSpecificDocPath = `page-good-for-all-versions/index.html?version=${theVersionString}`;
     }
@@ -95,21 +111,41 @@
     var referenceLink = `${theVersionString}/reference.html`;
 
     // see whether adding these at the end helps
-    moreLinks.push("docs/"+referenceLink);
+    if (theVersionString !== "latest-stable") {
+        moreLinks.push("docs/" + referenceLink);
+    }
     //moreLinks.push("docs/"+versionSpecificDocPath);
     //moreLinks.push(sandboxLink);
 
 
 
 
+      var blurb;
 
-    var blurb = `
+      if (theVersionString === "latest-stable") {
+    blurb = `
 
-<b>v${theVersionString}:</b><a href="${referenceLink}"> function reference</a> `;
+<b>latest stable</b> (v${versionStringAlwaysMajorMinorPatch}) <b>:</b>`;
+      }
+      else {
+          blurb = `
 
-if (versionsData[theVersionString].otherLinks) {
-  for (i = 0, len = versionsData[theVersionString].otherLinks.length; i < len; i++) {
-    eachLink = versionsData[theVersionString].otherLinks[i];
+<b>v${versionStringAlwaysMajorMinorPatch}:</b>`;
+      }
+
+      var referenceLink = `<a href="${referenceLink}"> function reference</a> `;
+      if (theVersionString === "latest-stable" && window.location.href.includes("site-generator-constexpr")) {
+          referenceLink = "<s>"+referenceLink+"</s>(reference page for 'latest stable' is only generated for compiled site) ";
+      }
+      blurb += referenceLink;
+
+
+
+      var theVersionsData = versionsData[versionStringAlwaysMajorMinorPatch];
+
+if (theVersionsData.otherLinks) {
+  for (i = 0, len = theVersionsData.otherLinks.length; i < len; i++) {
+    eachLink = theVersionsData.otherLinks[i];
     extraDocLink = `${theVersionString}/${eachLink.link}`;
     moreLinks.push("docs/"+extraDocLink);
     blurb += `| <a href="${extraDocLink}"> ${eachLink.text}</a> `;
@@ -119,24 +155,24 @@ if (versionsData[theVersionString].otherLinks) {
 blurb += `| <a href="../${sandboxLink}"> sandbox</a>`;
 blurb += ` | <a href="${versionSpecificDocPath}"> version-specific doc</a>`;
 
-if (versionsData[theVersionString].addCommitsLink) {
-  blurb += ` | <a href="https://github.com/davidedc/Algebrite/compare/v${nextVersionOlderThan(theVersionString)}...v${theVersionString}"> commits</a>`;
+if (theVersionsData.addCommitsLink) {
+  blurb += ` | <a href="https://github.com/davidedc/Algebrite/compare/v${nextVersionOlderThan(versionStringAlwaysMajorMinorPatch)}...v${versionStringAlwaysMajorMinorPatch}"> commits</a>`;
 }
 
 blurb += "<br>";
 
-if (versionsData[theVersionString].changes) {
-  blurb += `<b>Changes:</b> ${versionsData[theVersionString].changes}<br>
+if (theVersionsData.changes) {
+  blurb += `<b>Changes:</b> ${theVersionsData.changes}<br>
 `;
 }
 
-if (versionsData[theVersionString].otherInfo) {
-  blurb += `<b>Other Info:</b> ${versionsData[theVersionString].otherInfo}<br>
+if (theVersionsData.otherInfo) {
+  blurb += `<b>Other Info:</b> ${theVersionsData.otherInfo}<br>
 `;
 }
 
-if (versionsData[theVersionString].knownIssues) {
-  blurb += `<b>Known issues:</b> ${versionsData[theVersionString].knownIssues}<br>
+if (theVersionsData.knownIssues) {
+  blurb += `<b>Known issues:</b> ${theVersionsData.knownIssues}<br>
 `;
 }
 

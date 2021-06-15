@@ -32,9 +32,9 @@
     </style>
 
     <script src="utils-always-loaded.js"></script>
-    <script src="get-url-parameter.js"></script>
     <script src="versions-data.js"></script>
     <script src="versions-data-utils.js"></script>
+    <script src="get-url-parameter.js"></script>
 
 </head>
 
@@ -74,33 +74,18 @@
     </div>
 
     <script type='text/javascript'>
+
         const sandboxLinkSpan = document.getElementById("sandboxLinkSpan");
-        // this if checks if the page has already been compiled, in which case the spans and links
-        // already have everything correct
-        // otherwise, the page is being accessed "as a template", or it's being compiled, in which case
-        // nothing is baked, and we need to do everything.
+
         if (!compiled()) {
-            // get the algebrite version to be loaded directly from the URL
-            var algebriteVersionToBeLoaded;
-
-            // get the algebrite version to be loaded directly from the URL
-            algebriteVersionToBeLoaded = getURLParameter("version");
-
-            if (algebriteVersionToBeLoaded === undefined) {
-                algebriteVersionToBeLoaded = window.location.pathname.replace(/.*docs\//,"").replace(/\/.*/,"");
-            }
-
-            if (algebriteVersionToBeLoaded === "latest-stable") {
-                algebriteVersionToBeLoaded = latestStableAlgebriteVersion;
-            }
 
 
             //////////////////////
             // Fix the page title
             //////////////////////
             var documentTitle = "Algebrite v";
-            documentTitle += algebriteVersionToBeLoaded;
-            if (algebriteVersionToBeLoaded === latestStableAlgebriteVersion){
+            documentTitle += algebriteVersion;
+            if (algebriteVersion === latestStableAlgebriteVersion){
                 documentTitle += " (latest-stable)";
             }
             documentTitle += " docs"
@@ -108,21 +93,34 @@
 
 
             const versionInHeaderSpan = document.getElementById("versionInHeaderSpan");
-            versionInHeaderSpan.innerHTML += "v" + algebriteVersionToBeLoaded;
 
-            if (algebriteVersionToBeLoaded === latestStableAlgebriteVersion){
-                versionInHeaderSpan.innerHTML += " (latest-stable)";
+            if (versionFromURL === "latest-stable") {
+                versionInHeaderSpan.innerHTML += "Latest stable (v" + algebriteVersion + ")";
+            }
+            else {
+                versionInHeaderSpan.innerHTML += "v" + algebriteVersion;
+
+                if (algebriteVersion === latestStableAlgebriteVersion){
+                    versionInHeaderSpan.innerHTML += " (latest-stable)";
+                }
             }
 
             const referenceLinkSpan = document.getElementById("referenceLinkSpan");
-            referenceLinkSpan.innerHTML += `<a href="docs/${algebriteVersionToBeLoaded}/reference.html">function reference</a>`;
 
-            sandboxLinkSpan.innerHTML = `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${algebriteVersionToBeLoaded}">sandbox</a>`;
+            if (versionFromURL === "latest-stable" && window.location.href.includes("site-generator-constexpr")) {
+                referenceLinkSpan.innerHTML += `<s><a href="docs/${versionFromURL}/reference.html">function reference</a></s> (reference page for 'latest stable' is only generated for compiled site)`;
+            }
+            else {
+                referenceLinkSpan.innerHTML += `<a href="docs/${versionFromURL}/reference.html">function reference</a>`;
+            }
 
-            if (versionsData[algebriteVersionToBeLoaded].otherLinks) {
-                for (i = 0, len = versionsData[algebriteVersionToBeLoaded].otherLinks.length; i < len; i++) {
-                    eachLink = versionsData[algebriteVersionToBeLoaded].otherLinks[i];
-                    extraDocLink = `${algebriteVersionToBeLoaded}/${eachLink.link}`;
+
+            sandboxLinkSpan.innerHTML = `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${versionFromURL}">sandbox</a>`;
+
+            if (versionsData[algebriteVersion].otherLinks) {
+                for (i = 0, len = versionsData[algebriteVersion].otherLinks.length; i < len; i++) {
+                    eachLink = versionsData[algebriteVersion].otherLinks[i];
+                    extraDocLink = `${algebriteVersion}/${eachLink.link}`;
                     extraDocsLinksSpan.innerHTML += `<a href="docs/${extraDocLink}"> ${eachLink.text}</a><br> `;
                 }
             }
@@ -145,7 +143,7 @@
             }
         }
         else {
-            sandboxLinkSpan.innerHTML = `<a href="sandboxes/${algebriteVersionToBeLoaded}/sandbox.html">sandbox</a>`;
+            sandboxLinkSpan.innerHTML = `<a href="sandboxes/${versionFromURL}/sandbox.html">sandbox</a>`;
             window._ConstexprJS_.compile();
         }
     </script>

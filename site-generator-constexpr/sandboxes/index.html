@@ -73,10 +73,10 @@
 
         const latestVersionsSandboxesDiv = document.getElementById("latest-stable-sandbox");
         if (window.location.href.includes("site-generator-constexpr")) {
-            latestVersionsSandboxesDiv.innerHTML += `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=latest-stable">latest (${latestStableAlgebriteVersion})</a>`;
+            latestVersionsSandboxesDiv.innerHTML += `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=latest-stable">Latest-stable (v${latestStableAlgebriteVersion})</a>`;
         }
         else {
-            latestVersionsSandboxesDiv.innerHTML += `<a href="sandboxes/latest-stable/sandbox.html">latest (${latestStableAlgebriteVersion})</a>`;
+            latestVersionsSandboxesDiv.innerHTML += `<a href="sandboxes/latest-stable/sandbox.html">Latest-stable (v${latestStableAlgebriteVersion})</a>`;
         }
 
         const allVersionsSandboxesDiv = document.getElementById("all-versions-sandboxes");

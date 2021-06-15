@@ -44,19 +44,26 @@
 	<script src="../../versions-data-utils.js"></script>
 	<script src="../../get-url-parameter.js"></script>
 	<script type='text/javascript'>
-		// get the algebrite version to be loaded directly from the URL
-		var algebriteVersionToBeLoaded;
+		window.whenCorrectAlgebriteVersionIsLoaded = function() {
+			var documentTitle = "Algebrite ";
 
-		// get the algebrite version to be loaded directly from the URL
-		algebriteVersionToBeLoaded = getURLParameter("version");
+			if (versionFromURL === "latest-stable") {
+				documentTitle += "latest stable (v";
+				documentTitle += algebriteVersion;
+				documentTitle += ")"
+				document.title = documentTitle
+			}
+			else {
+				documentTitle += "v";
+				documentTitle += algebriteVersion;
+				if (Algebrite.version === latestStableAlgebriteVersion) {
+					documentTitle += " (latest-stable)";
+				}
+			}
+			documentTitle += " sandbox"
+			document.title = documentTitle
+		};
 
-		if (algebriteVersionToBeLoaded === undefined) {
-			algebriteVersionToBeLoaded = window.location.pathname.replace(/.*sandboxes\//,"").replace(/\/.*/,"");
-		}
-
-		if (algebriteVersionToBeLoaded === "latest-stable") {
-			algebriteVersionToBeLoaded = latestStableAlgebriteVersion;
-		}
 
 	</script>
 
@@ -65,26 +72,13 @@
 	<script src="../libs/commandsDispatcher.js"></script>
 	<script>
 		autosize(document.getElementById("inputTextarea"));
-	</script>
 
-	<script type='text/javascript'>
-
-	window.whenCorrectAlgebriteVersionIsLoaded = function() {
-		var documentTitle = "Algebrite v";
-	    documentTitle += algebriteVersionToBeLoaded;
-	    if (Algebrite.version === latestStableAlgebriteVersion){
-	    	documentTitle += " (latest-stable)";
-	    }
-	    documentTitle += " Sandbox"
-	    document.title =  documentTitle
-	};
-
-	window.onload = function() {
-	  var s = document.createElement( 'script' );
-	  s.setAttribute( 'src', "../../dist/" + algebriteVersionToBeLoaded + "/algebrite.bundle-for-browser.js" );
-	  s.onload=whenCorrectAlgebriteVersionIsLoaded;
-	  document.body.appendChild( s );
-	}
+		window.onload = function() {
+			var s = document.createElement( 'script' );
+			s.setAttribute( 'src', "../../dist/" + algebriteVersion + "/algebrite.bundle-for-browser.js" );
+			s.onload=whenCorrectAlgebriteVersionIsLoaded;
+			document.body.appendChild( s );
+		}
 
 	</script>
 
