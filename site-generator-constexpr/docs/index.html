@@ -32,7 +32,7 @@
           output: moreLinks[i]});
       }
 
-      for (i = 1, len = sortedVersionsFromNewToOld.length; i < len; i++) {
+      for (i = 0, len = sortedVersionsFromNewToOld.length; i < len; i++) {
 
           eachVersion = sortedVersionsFromNewToOld[i];
 
@@ -73,7 +73,7 @@
 
     const allVersionsInfoDiv = document.getElementById("all-versions-info");
 
-    for (i = 1, len = sortedVersionsFromNewToOld.length; i < len; i++) {
+    for (i = 0, len = sortedVersionsFromNewToOld.length; i < len; i++) {
       eachVersion = sortedVersionsFromNewToOld[i];
       allVersionsInfoDiv.innerHTML += versionBlurb(eachVersion);
     }
@@ -180,7 +180,7 @@ Latest stable</h2>
 
 
 <h2>
-Previous versions</h2>
+All versions</h2>
 
     <div id="all-versions-info">
     </div>
