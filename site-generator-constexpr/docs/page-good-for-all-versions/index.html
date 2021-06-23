@@ -115,7 +115,12 @@
             }
 
 
-            sandboxLinkSpan.innerHTML = `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${versionFromURL}">sandbox</a>`;
+            if (!compiling()) {
+                sandboxLinkSpan.innerHTML = `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${versionFromURL}">sandbox</a>`;
+            }
+            else {
+                sandboxLinkSpan.innerHTML = `<a href="sandboxes/${versionFromURL}/sandbox.html">sandbox</a>`;
+            }
 
             if (versionsData[algebriteVersion].otherLinks) {
                 for (i = 0, len = versionsData[algebriteVersion].otherLinks.length; i < len; i++) {
@@ -143,7 +148,6 @@
             }
         }
         else {
-            sandboxLinkSpan.innerHTML = `<a href="sandboxes/${versionFromURL}/sandbox.html">sandbox</a>`;
             window._ConstexprJS_.compile();
         }
     </script>
