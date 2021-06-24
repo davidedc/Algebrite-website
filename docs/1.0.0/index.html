@@ -31,9 +31,15 @@
     }
     </style>
 
-  </head>
+    <script src="utils-always-loaded.js"></script>
+    <script src="versions-data.js"></script>
+    <script src="versions-data-utils.js"></script>
+    <script src="get-url-parameter.js"></script>
+
+</head>
+
   <body>
-  
+
     <div class="wrapper">
       <header>
         <a href="index.html"><img src="site-images/algebrite-logo.png" alt="algebrite logo" width="20%">
@@ -53,12 +59,11 @@
 
 
 <h3>
-v.1.0.0 docs:</h3>
+<span id="versionInHeaderSpan">v1.0.0</span> docs:</h3>
 
-<a href="docs/1.0.0/reference.html">function reference</a> <br>
-<a href="docs/1.0.0/why-tensor-notation-changes-in-v1.0.0.html">why the tensor notation changes in v1.0.0?</a> <br>
-
-
+<span id="referenceLinkSpan"><a href="docs/1.0.0/reference.html">function reference</a></span> <br>
+<span id="sandboxLinkSpan"><a href="sandboxes/1.0.0/sandbox.html">sandbox</a></span> <br>
+<span id="extraDocsLinksSpan"><a href="docs/1.0.0/why-tensor-notation-changes-in-v1.0.0.html"> why the tensor notation changes in v1.0.0?</a><br> </span> <br>
 <br>
 <br>
 
@@ -68,11 +73,70 @@ v.1.0.0 docs:</h3>
 
     </div>
 
+    <script type="text/javascript">
+
+        const sandboxLinkSpan = document.getElementById("sandboxLinkSpan");
+
+        if (!compiled()) {
 
 
+            //////////////////////
+            // Fix the page title
+            //////////////////////
+            var documentTitle = "Algebrite v";
+            documentTitle += algebriteVersion;
+            if (algebriteVersion === latestStableAlgebriteVersion){
+                documentTitle += " (latest-stable)";
+            }
+            documentTitle += " docs"
+            document.title =  documentTitle
 
 
-  
+            const versionInHeaderSpan = document.getElementById("versionInHeaderSpan");
+
+            if (versionFromURL === "latest-stable") {
+                versionInHeaderSpan.innerHTML += "Latest stable (v" + algebriteVersion + ")";
+            }
+            else {
+                versionInHeaderSpan.innerHTML += "v" + algebriteVersion;
+
+                if (algebriteVersion === latestStableAlgebriteVersion){
+                    versionInHeaderSpan.innerHTML += " (latest-stable)";
+                }
+            }
+
+            const referenceLinkSpan = document.getElementById("referenceLinkSpan");
+
+            if (versionFromURL === "latest-stable" && window.location.href.includes("site-generator-constexpr")) {
+                referenceLinkSpan.innerHTML += `<s><a href="docs/${versionFromURL}/reference.html">function reference</a></s> (reference page for 'latest stable' is only generated for compiled site)`;
+            }
+            else {
+                referenceLinkSpan.innerHTML += `<a href="docs/${versionFromURL}/reference.html">function reference</a>`;
+            }
+
+
+            if (!compiling()) {
+                sandboxLinkSpan.innerHTML = `<a href="sandboxes/sandbox-good-for-all-versions/sandbox.html?version=${versionFromURL}">sandbox</a>`;
+            }
+            else {
+                sandboxLinkSpan.innerHTML = `<a href="sandboxes/${versionFromURL}/sandbox.html">sandbox</a>`;
+            }
+
+            if (versionsData[algebriteVersion].otherLinks) {
+                for (i = 0, len = versionsData[algebriteVersion].otherLinks.length; i < len; i++) {
+                    eachLink = versionsData[algebriteVersion].otherLinks[i];
+                    extraDocLink = `${algebriteVersion}/${eachLink.link}`;
+                    extraDocsLinksSpan.innerHTML += `<a href="docs/${extraDocLink}"> ${eachLink.text}</a><br> `;
+                }
+            }
+
+
+        }
+
+    </script>
+
+
+    
 
   
 </body></html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
 	<meta charset="utf-8">
 
-    <title>Algebrite Sandbox</title>
+    <title>Algebrite latest stable (v1.4.0) sandbox</title>
     <meta name="author" content="Davide Della Casa">
     <meta name="Description" content="Algebrite sandbox">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="">
@@ -41,39 +41,122 @@
 
 	<script src="../../versions-data.js"></script>
 	<script src="../../versions-data-utils.js"></script>
-	<script type="text/javascript">
-		var algebriteVersionToBeLoaded = latestStableAlgebriteVersion;
-	</script>
+	<script src="../../get-url-parameter.js"></script>
 
 	<script src="../libs/autosize.min.js"></script>
 	<script src="../libs/simple-console.js"></script>
 	<script src="../libs/commandsDispatcher.js"></script>
+	<script src="../../utils-always-loaded.js"></script>
 	<script>
-		autosize(document.getElementById("inputTextarea"));
-	</script>
 
-	<script type="text/javascript">
+		// if the page is compiled there is no need to do this because
+		// the baked page will already have the correct title baked in.
+		if (!compiled()) {
+			// fix the page title
+			var documentTitle = "Algebrite ";
 
-	window.whenCorrectAlgebriteVersionIsLoaded = function() {
-		var documentTitle = "Algebrite v";
-	    documentTitle += latestStableAlgebriteVersion;
-	    if (Algebrite.version === latestStableAlgebriteVersion){
-	    	documentTitle += " (latest-stable)";
-	    }
-	    documentTitle += " Sandbox"
-	    document.title =  documentTitle
-	};
+			if (versionFromURL === "latest-stable") {
+				documentTitle += "latest stable (v";
+				documentTitle += algebriteVersion;
+				documentTitle += ")"
+				document.title = documentTitle
+			} else {
+				documentTitle += "v";
+				documentTitle += algebriteVersion;
+				if (algebriteVersion === latestStableAlgebriteVersion) {
+					documentTitle += " (latest-stable)";
+				}
+			}
+			documentTitle += " sandbox"
+			document.title = documentTitle
+		}
 
-	window.onload = function() {
-	  var s = document.createElement( 'script' );
-	  s.setAttribute( 'src', "../../dist/" + algebriteVersionToBeLoaded + "/algebrite.bundle-for-browser.js" );
-	  s.onload=whenCorrectAlgebriteVersionIsLoaded;
-	  document.body.appendChild( s );
-	}
+		// when compiling, don't do anything i.e. don't set up/initialise the console
+		// or add the input text, and as well don't load the Algebrite bundle
+		// because otherwise it will all be "baked in" the compiled page, which
+		// we don't want, because the "compiled" page will do all of this
+		// dynamically.
+		// We could potentially bake some of this in, but the page has always been
+		// dynamic this way
+		if (!compiling()) {
 
-	</script>
+			function getWelcomeMessage(){
+				var welcomeMessage = "Algebrite ";
 
-	
+
+				if (versionFromURL === "latest-stable") {
+					welcomeMessage = "Latest stable (v";
+					welcomeMessage += algebriteVersion;
+					welcomeMessage += ") sandbox"
+				} else {
+					welcomeMessage = "v";
+					welcomeMessage += algebriteVersion;
+					if (versionFromURL === latestStableAlgebriteVersion) {
+						welcomeMessage += " (latest-stable)";
+					}
+					welcomeMessage += " sandbox"
+				}
 
 
-<script src="../../dist/1.4.0/algebrite.bundle-for-browser.js"></script></body></html>
+				welcomeMessage += " (both Algebrite scripting and Algebrite JS API modes)<br/>";
+				welcomeMessage += "&nbsp;• end a line with ';' to indicate you are using JS API mode, otherwise input<br/>";
+				welcomeMessage += "&nbsp;&nbsp;&nbsp;&nbsp;will be interpreted as an Algebrite script.<br/>";
+				welcomeMessage += "&nbsp;• hit shift-enter for multiple lines (works for Algebrite scripts better)<br/>";
+				welcomeMessage += "<br/>";
+				welcomeMessage += "type 'help' for help.<br/>";
+				welcomeMessage += "--------------------------------------------------------------------------------<br/>";
+				return welcomeMessage
+			}
+
+
+			var con;
+			function createConsoleAndAutoSizeUserInput() {
+				// create console and print the "welcome" message
+				con = new SimpleConsole({
+					handleCommand: handle_command,
+					placeholder: "Enter Algebrite commands (or JS terminating with ';')",
+					storageID: "simple-console demo"
+				});
+				document.body.appendChild(con.element);
+				con.logHTML(getWelcomeMessage());
+				autosize(document.getElementById("inputTextarea"));
+			}
+
+		}
+
+		if (compiled()) {
+			// if the page is already "baked", then the Algebrite script tag that loads the correct
+			// algebrite version is already baked-in, so
+			// we just need to create the console and size the user input.
+			// Note that formally we should wait for the Algebrite script to be loaded
+			// before giving the user the input, but really practically it doesn't matter:
+			// the script will be loaded before the user gets to input anything
+			createConsoleAndAutoSizeUserInput();
+		}
+		else {
+			// if this page is not compiled, then we need to:
+
+			// first, dynamically load the script
+			var s = document.createElement('script');
+			s.setAttribute('src', "../../dist/" + algebriteVersion + "/algebrite.bundle-for-browser.js");
+			document.body.appendChild(s);
+
+			// then, if we are compiling, that's it
+			if (compiling()) {
+				window._ConstexprJS_.compile();
+			}
+			// otherwise, if this page is being loaded in its "yet to be baked" form
+			// then create the console and size the user input.
+			// Note that formally we should wait for the Algebrite script to be loaded
+			// before giving the user the input, but really practically it doesn't matter:
+			// the script will be loaded before the user gets to input anything
+			else {
+				createConsoleAndAutoSizeUserInput()
+			}
+		}
+
+
+	</script><script src="../../dist/1.4.0/algebrite.bundle-for-browser.js"></script>
+
+
+</body></html>
