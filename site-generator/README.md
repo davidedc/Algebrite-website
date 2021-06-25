@@ -1,1 +1,0 @@
-derived from https://github.com/lutzroeder/minimal
