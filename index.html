@@ -18,10 +18,9 @@
   </head>
   <body>
 
-  
-  
-
-  
+  <script src="versions-data.js"></script>
+  <script src="versions-data-utils.js"></script>
+  <script src="utils-always-loaded.js"></script>
 
     <div class="wrapper">
       <header>
@@ -335,10 +334,29 @@ Other Javascript CAS are:
     <script src="javascripts/scale.fix.js"></script>
 
 <script src="javascripts/jquery.min.js"></script>
-<script src="dist/latest-stable/algebrite.bundle-for-browser.js"></script>
+
+<script>
+    if (!compiled()) {
+        // if this page is not compiled, then we need to
+        // dynamically add the script that loads the latest version of the Algebrite code.
+        // not that this script tag will be baked-in the compiled page.
+        var s = document.createElement('script');
+        s.setAttribute('src', "dist/" + latestStableAlgebriteVersion + "/algebrite.bundle-for-browser.js");
+        document.body.appendChild(s);
+
+        const latestStableInSidePaneDiv = document.getElementById("latestVersionInSidePane");
+        latestStableInSidePaneDiv.innerHTML += "v"+latestStableAlgebriteVersion;
+
+        // then, if we are compiling, that's it
+        if (compiling()) {
+            window._ConstexprJS_.compile();
+        }
+    }
+
+</script><script src="dist/1.4.0/algebrite.bundle-for-browser.js"></script>
 
 
-  <script type="text/javascript" language="javascript">
+<script type="text/javascript" language="javascript">
 
 
     function execute (whichTerminal) {
